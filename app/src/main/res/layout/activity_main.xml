@@ -164,7 +164,9 @@
             <ImageView
                 android:layout_width="64.5px"
                 android:layout_height="64.5px"
+                android:layout_marginLeft="33px"
                 android:layout_marginRight="19.5px"
+                android:layout_gravity="center_vertical"
                 android:src="@drawable/circle" />
         </LinearLayout>
 
