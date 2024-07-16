@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/black"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/const_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="69.2px"
+        android:layout_marginLeft="52px"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/temp_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8px"
+            android:src="@drawable/temp_time"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_weather"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/weather1081"
+            android:layout_marginRight="65px"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/temperature"
+            app:layout_constraintEnd_toStartOf="@+id/img_weather"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/const_top">
+
+        <ImageButton
+            android:id="@+id/btn_menu"
+            android:layout_width="32.3px"
+            android:layout_height="24.9px"
+            android:layout_marginLeft="64px"
+            android:background="@android:color/transparent"
+            android:contentDescription="menu"
+            android:src="@drawable/ic_menu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="45px"
+            android:text="환기"
+            android:textStyle="normal"
+            android:textSize="47sp"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@+id/btn_menu"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="217px"
+            android:layout_marginEnd="75px"
+            android:text="각방 환기"
+            android:textColor="@color/white"
+            android:textSize="47sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+            app:layout_constraintStart_toEndOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="60px"
+            android:background="@android:color/transparent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_ionic_md_home" />
+
+        <ImageButton
+            android:id="@+id/imageButton2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="33.7px"
+            android:background="@android:color/transparent"
+            android:contentDescription="TODO"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/question_btn" />
+
+        <Button
+            android:id="@+id/imageButton3"
+            android:layout_width="166px"
+            android:layout_height="59px"
+            android:layout_marginEnd="34px"
+            android:text="필터 교환"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:background="@drawable/change_filter_btn"
+            android:contentDescription="change_filter"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imageButton2"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/change_filter_btn">
+        </Button>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="131px"
+        android:paddingRight="131px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <LinearLayout
+            android:layout_width="540px"
+            android:layout_height="wrap_content"
+            android:background="@drawable/radius"
+            android:orientation="horizontal"
+            android:paddingVertical="30px"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="36px"
+                android:text="[예악운전] 일반환기 동작중"
+                android:textStyle="normal"
+                android:textSize="36sp"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="19.5px"
+                android:src="@drawable/circle" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
