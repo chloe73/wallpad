@@ -53,7 +53,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/const_top">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/btn_menu"
             android:layout_width="65px"
             android:layout_height="65px"
@@ -72,24 +72,11 @@
             android:layout_marginStart="45px"
             android:text="환기"
             android:textStyle="normal"
-            android:textSize="47sp"
+            android:textSize="47px"
             android:textColor="@color/white"
             app:layout_constraintStart_toEndOf="@+id/btn_menu"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="217px"
-            android:layout_marginEnd="75px"
-            android:text="각방 환기"
-            android:textColor="@color/white"
-            android:textSize="47sp"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toStartOf="@+id/imageButton3"
-            app:layout_constraintStart_toEndOf="@+id/textView"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/btn_home"
@@ -108,68 +95,38 @@
             android:layout_height="63px"
             android:layout_marginEnd="33.7px"
             android:background="@android:color/transparent"
-            android:contentDescription="TODO"
+            android:contentDescription="help"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btn_home"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/manual_btn" />
 
-        <Button
+        <ImageView
             android:id="@+id/imageButton3"
             android:layout_width="166px"
             android:layout_height="59px"
             android:layout_marginEnd="34px"
-            android:text="필터 교환"
-            android:textAlignment="center"
-            android:textColor="@color/white"
             android:background="@drawable/change_filter_btn"
-            android:contentDescription="change_filter"
+            android:contentDescription="change filter"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton2"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/change_filter_btn">
-        </Button>
+        </ImageView>
 
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingLeft="131px"
-        android:paddingRight="131px"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
-
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/radius"
-            android:orientation="horizontal"
-            android:paddingVertical="30px"
-            android:layout_marginTop="132px"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="36px"
-                android:text="[예약운전] 일반환기 동작중"
-                android:textStyle="normal"
-                android:textSize="36sp"
-                android:textColor="@color/white" />
-
-            <ImageView
-                android:layout_width="64.5px"
-                android:layout_height="64.5px"
-                android:layout_marginLeft="33px"
-                android:layout_marginRight="19.5px"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/circle" />
-        </LinearLayout>
+            android:text="필터 교환"
+            android:textColor="@color/white"
+            android:textSize="30px"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
+            app:layout_constraintEnd_toEndOf="@+id/imageButton3"
+            app:layout_constraintStart_toStartOf="@+id/imageButton3"
+            app:layout_constraintTop_toTopOf="@+id/imageButton3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
