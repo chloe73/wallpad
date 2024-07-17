@@ -7,32 +7,80 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="102px"
         android:background="@drawable/radius"
         android:orientation="horizontal"
-        android:paddingVertical="30px"
-        android:layout_marginTop="132px"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="36px"
+            android:layout_marginStart="36px"
+            android:fontFamily="@font/apple_sd_gothic_neo_eb"
+            android:gravity="center_vertical"
             android:text="[예약운전] 일반환기 동작중"
+            android:textColor="@color/white"
+            android:textSize="36px"
             android:textStyle="normal"
-            android:textSize="36sp"
-            android:textColor="@color/white" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:layout_width="64.5px"
             android:layout_height="64.5px"
-            android:layout_marginLeft="33px"
-            android:layout_marginRight="19.5px"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/circle" />
-    </LinearLayout>
+            android:layout_marginStart="33px"
+            android:layout_marginEnd="19.5px"
+            android:src="@drawable/circle"
+            app:layout_constraintBottom_toBottomOf="@+id/textView2"
+            app:layout_constraintEnd_toEndOf="@id/constraintLayout2"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintTop_toTopOf="@+id/textView2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="102px"
+        android:background="@drawable/radius"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="46px"
+            android:fontFamily="@font/apple_sd_gothic_neo_m"
+            android:gravity="center_vertical"
+            android:text="전원"
+            android:textColor="@color/white"
+            android:textSize="33px"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+        
+        <Switch
+            android:track="@drawable/switch_track"
+            android:thumb="@drawable/switch_thumb"
+            android:layout_width="89.6px"
+            android:layout_height="41px"
+            android:layout_marginStart="27.5px"
+            android:layout_marginEnd="40.9px"
+            app:layout_constraintTop_toTopOf="@id/textView3"
+            app:layout_constraintBottom_toBottomOf="@id/textView3"
+            app:layout_constraintStart_toEndOf="@id/textView3"
+            app:layout_constraintEnd_toEndOf="@id/constraintLayout3"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

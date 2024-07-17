@@ -8,6 +8,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +21,12 @@ public class MainActivity extends AppCompatActivity {
         // Fragment의 영역을 적용하기 위해서는 FragmentManager를 먼저 생성해주어야 함
         FragmentManager fragmentManager = getSupportFragmentManager();
 
+        //프래그먼트 Transaction 획득
+        //프래그먼트를 올리거나 교체하는 작업을 Transaction이라고 합니다.
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        fragmentTransaction.add(R.id.container_ventilation, new VentilationFragment());
+        fragmentTransaction.commit();
 
     }
 }
