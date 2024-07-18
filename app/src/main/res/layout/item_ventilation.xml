@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="261px"
+    android:layout_height="261px"
+    android:background="@drawable/item_ventilation_border">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="138px"
+        android:layout_height="43px"
+        android:layout_marginTop="38px"
+        android:background="@drawable/room_border_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/room_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/apple_sd_gothic_neo_b"
+        android:text="거실"
+        android:textColor="#000000"
+        android:textSize="31px"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/room_vantilation_onoff"
+        android:layout_width="124px"
+        android:layout_height="124px"
+        android:layout_marginTop="18px"
+        android:background="@drawable/ventilation_on"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

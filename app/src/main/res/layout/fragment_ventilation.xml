@@ -11,6 +11,7 @@
         android:id="@+id/constraintLayout2"
         android:layout_width="wrap_content"
         android:layout_height="102px"
+        android:layout_marginStart="131px"
         android:background="@drawable/radius"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
@@ -48,6 +49,7 @@
         android:id="@+id/constraintLayout3"
         android:layout_width="wrap_content"
         android:layout_height="102px"
+        android:layout_marginEnd="131px"
         android:background="@drawable/radius"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent"
@@ -69,6 +71,7 @@
             app:layout_constraintTop_toTopOf="parent" />
         
         <Switch
+            android:id="@+id/switch_onoff"
             android:track="@drawable/switch_track"
             android:thumb="@drawable/switch_thumb"
             android:layout_width="89.6px"
@@ -82,5 +85,21 @@
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--    여기에 그리드 형태로 리사이클러뷰 생성 :  최대 6개 아이템으로 구성하고 아이템이 6개가 넘어가면 페이징 처리 -->
+
+
+    <!-- Grid 형태의 RecyclerView -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="539px"
+        android:layout_marginTop="33px"
+        android:paddingLeft="131px"
+        android:paddingRight="131px"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_ventilation" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
