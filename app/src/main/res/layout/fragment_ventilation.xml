@@ -74,8 +74,8 @@
             android:id="@+id/switch_onoff"
             android:track="@drawable/switch_track"
             android:thumb="@drawable/switch_thumb"
-            android:layout_width="89.6px"
-            android:layout_height="41px"
+            android:layout_width="91.4px"
+            android:layout_height="42.2px"
             android:layout_marginStart="27.5px"
             android:layout_marginEnd="40.9px"
             app:layout_constraintTop_toTopOf="@id/textView3"
@@ -87,19 +87,245 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 <!--    여기에 그리드 형태로 리사이클러뷰 생성 :  최대 6개 아이템으로 구성하고 아이템이 6개가 넘어가면 페이징 처리 -->
-
-
     <!-- Grid 형태의 RecyclerView -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="539px"
-        android:layout_marginTop="33px"
-        android:paddingLeft="131px"
-        android:paddingRight="131px"
+        android:layout_height="550px"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:listitem="@layout/item_ventilation" />
+        android:layout_marginTop="41.5px"
+        android:orientation="horizontal"
+        />
+
+    <me.relex.circleindicator.CircleIndicator3
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="50px"
+        app:ci_drawable_unselected="@drawable/indicator_gray"
+        app:ci_drawable="@drawable/indicator_white"
+        android:layout_marginTop="29px"
+        app:layout_constraintTop_toBottomOf="@+id/view_pager"/>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="130px"
+        android:paddingRight="137px"
+        app:layout_constraintTop_toBottomOf="@+id/indicator"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout4"
+            android:layout_width="wrap_content"
+            android:layout_height="102px"
+            android:background="@drawable/radius"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40px"
+                android:fontFamily="@font/apple_sd_gothic_neo_eb"
+                android:gravity="center_vertical"
+                android:text="예약운전"
+                android:textColor="@color/white"
+                android:textSize="33px"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Switch
+                android:id="@+id/switch_onoff2"
+                android:layout_width="91.4px"
+                android:layout_height="42.2px"
+                android:layout_marginStart="127.7px"
+                android:layout_marginEnd="31.7px"
+                android:layout_marginBottom="4dp"
+                android:thumb="@drawable/switch_thumb"
+                android:track="@drawable/switch_track"
+                app:layout_constraintBottom_toBottomOf="@+id/textView4"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
+                app:layout_constraintTop_toTopOf="@+id/textView4" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout5"
+            android:layout_width="wrap_content"
+            android:layout_height="102px"
+            android:background="@drawable/radius"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40px"
+                android:fontFamily="@font/apple_sd_gothic_neo_eb"
+                android:gravity="center_vertical"
+                android:text="제균"
+                android:textColor="@color/white"
+                android:textSize="33px"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Switch
+                android:id="@+id/switch_onoff3"
+                android:layout_width="91.4px"
+                android:layout_height="42.2px"
+                android:layout_marginStart="184.4px"
+                android:layout_marginEnd="31px"
+                android:layout_marginBottom="4dp"
+                android:thumb="@drawable/switch_thumb"
+                android:track="@drawable/switch_track"
+                app:layout_constraintBottom_toBottomOf="@+id/textView5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView5"
+                app:layout_constraintTop_toTopOf="@+id/textView5" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12px"
+        android:paddingLeft="130px"
+        android:paddingRight="137px"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout6"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout15"
+            android:layout_width="wrap_content"
+            android:layout_height="102px"
+            android:background="@drawable/radius"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40px"
+                android:fontFamily="@font/apple_sd_gothic_neo_eb"
+                android:gravity="center_vertical"
+                android:text="예약설정"
+                android:textColor="@color/white"
+                android:textSize="33px"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/img_settings"
+                android:background="@drawable/icon_ionic_ios_settings"
+                android:layout_width="40.9px"
+                android:layout_height="41px"
+                android:layout_marginStart="178.1px"
+                android:layout_marginEnd="30px"
+                android:layout_marginBottom="4dp"
+                app:layout_constraintBottom_toBottomOf="@+id/textView6"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView6"
+                app:layout_constraintTop_toTopOf="@+id/textView6" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout16"
+            android:layout_width="wrap_content"
+            android:layout_height="102px"
+            android:background="@drawable/radius"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="41px"
+                android:fontFamily="@font/apple_sd_gothic_neo_eb"
+                android:gravity="center_vertical"
+                android:text="타이머"
+                android:textColor="@color/white"
+                android:textSize="33px"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/text_timer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="184.4px"
+                android:layout_marginEnd="31px"
+                android:layout_marginBottom="4dp"
+                android:text="6:54"
+                android:fontFamily="@font/apple_sd_gothic_neo_sb"
+                android:textStyle="normal"
+                android:textSize="33sp"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/textView7"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView7"
+                app:layout_constraintTop_toTopOf="@+id/textView7" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="81px"
+        android:paddingLeft="133px"
+        android:paddingRight="133px"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+        
+        <ImageView
+            android:layout_width="153px"
+            android:layout_height="152px"
+            android:background="@drawable/ventilation_mode" />
+
+        <ImageView
+            android:layout_width="153px"
+            android:layout_height="152px"
+            android:background="@drawable/each_room_ventilation" />
+
+        <ImageView
+            android:layout_width="153px"
+            android:layout_height="152px"
+            android:background="@drawable/wind_power" />
+
+        <ImageView
+            android:layout_width="153px"
+            android:layout_height="152px"
+            android:background="@drawable/timer" />
+        
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

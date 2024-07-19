@@ -19,7 +19,7 @@ import java.util.List;
 
 public class VentilationAdapter extends RecyclerView.Adapter<VentilationAdapter.ViewHolder> {
 
-    private ArrayList<RoomVentilationItem> items;
+    private List<RoomVentilationItem> items;
 
     @NonNull
     @Override
@@ -44,10 +44,10 @@ public class VentilationAdapter extends RecyclerView.Adapter<VentilationAdapter.
         return items.size();
     }
 
-    public void setItems(ArrayList<RoomVentilationItem> items) {
+    public void setItems(List<RoomVentilationItem> items) {
         this.items = items;
         Log.d("adapter class", items.get(0).getName());
-        notifyDataSetChanged();
+        // notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

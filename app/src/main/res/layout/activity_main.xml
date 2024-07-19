@@ -20,7 +20,7 @@
 
         <ImageView
             android:id="@+id/temp_time"
-            android:layout_width="wrap_content"
+            android:layout_width="266px"
             android:layout_height="wrap_content"
             android:layout_marginTop="8px"
             android:src="@drawable/temp_time"
@@ -29,7 +29,7 @@
 
         <ImageView
             android:id="@+id/img_weather"
-            android:layout_width="wrap_content"
+            android:layout_width="79.4px"
             android:layout_height="wrap_content"
             android:src="@drawable/weather1081"
             android:layout_marginRight="65px"
@@ -37,7 +37,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="108.4px"
             android:layout_height="wrap_content"
             android:src="@drawable/temperature"
             app:layout_constraintEnd_toStartOf="@+id/img_weather"

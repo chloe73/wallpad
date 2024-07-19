@@ -1,5 +1,7 @@
 package com.example.wallpad_ui_ver_1_1.item;
 
+import com.example.wallpad_ui_ver_1_1.R;
+
 public class RoomVentilationItem {
 
     private String roomName;
