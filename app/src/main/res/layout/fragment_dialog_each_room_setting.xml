@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:alpha="1"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.ventilation.DialogEachRoomSettingFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="881px"
+        android:layout_height="794px"
+        android:background="@drawable/dialog_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btn_close_each_room_setting_dialog"
+            android:layout_width="24px"
+            android:layout_height="24px"
+            android:layout_margin="42px"
+            android:layout_marginTop="42px"
+            android:layout_marginEnd="42px"
+            android:background="@drawable/btn_close"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/img_each_room_title"
+            android:layout_width="324px"
+            android:layout_height="93px"
+            android:layout_margin="82px"
+            android:background="@drawable/dialog_title_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_room_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/apple_sd_gothic_neo_sb"
+            android:text="방이름이름"
+            android:textColor="@color/white"
+            android:textSize="50px"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="@+id/img_each_room_title"
+            app:layout_constraintEnd_toEndOf="@+id/img_each_room_title"
+            app:layout_constraintStart_toStartOf="@+id/img_each_room_title"
+            app:layout_constraintTop_toTopOf="@+id/img_each_room_title" />
+
+        <ImageView
+            android:id="@+id/img_each_room_setting_dialog_contents"
+            android:layout_width="770px"
+            android:layout_height="504px"
+            android:layout_marginTop="55.5px"
+            android:background="@drawable/dialog_contents_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_each_room_title" />
+
+        <TextView
+            android:id="@+id/tv_auto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="49px"
+            android:layout_marginTop="69px"
+            android:fontFamily="@font/apple_sd_gothic_neo_m"
+            android:text="동작상태"
+            android:textColor="@color/white"
+            android:textSize="37px"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="@+id/img_each_room_setting_dialog_contents"
+            app:layout_constraintTop_toTopOf="@+id/img_each_room_setting_dialog_contents" />
+
+        <Switch
+            android:id="@+id/switch_each_room_is_on_off"
+            android:layout_width="132px"
+            android:layout_height="61px"
+            android:layout_marginTop="60.5px"
+            android:layout_marginEnd="51px"
+            android:layout_marginBottom="4dp"
+            android:thumb="@drawable/switch_thumb"
+            android:track="@drawable/switch_track"
+            app:layout_constraintEnd_toEndOf="@id/img_each_room_setting_dialog_contents"
+            app:layout_constraintTop_toTopOf="@+id/img_each_room_setting_dialog_contents" />
+
+        <ImageView
+            android:id="@+id/img_line1"
+            android:layout_width="688.9px"
+            android:layout_height="3px"
+            android:layout_marginTop="55.5px"
+            android:background="@drawable/img_line"
+            app:layout_constraintEnd_toEndOf="@+id/img_each_room_setting_dialog_contents"
+            app:layout_constraintStart_toStartOf="@+id/img_each_room_setting_dialog_contents"
+            app:layout_constraintTop_toBottomOf="@+id/tv_auto" />
+
+        <TextView
+            android:id="@+id/tv_room_air_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="49px"
+            android:layout_marginTop="59.5px"
+            android:fontFamily="@font/apple_sd_gothic_neo_m"
+            android:text="공기질상태"
+            android:textColor="@color/white"
+            android:textSize="37px"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="@+id/img_each_room_setting_dialog_contents"
+            app:layout_constraintTop_toBottomOf="@+id/img_line1" />
+
+        <TextView
+            android:id="@+id/tv_room_air_status_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60.5px"
+            android:layout_marginEnd="19px"
+            android:layout_marginBottom="4dp"
+            android:text="대기질상태"
+            android:textColor="@color/white"
+            android:textSize="24px"
+            app:layout_constraintEnd_toStartOf="@id/img_air_status"
+            app:layout_constraintTop_toBottomOf="@+id/img_line1" />
+        
+        <ImageView
+            android:id="@+id/img_air_status"
+            android:layout_width="68px"
+            android:layout_height="69px"
+            android:layout_marginTop="44.5px"
+            android:layout_marginEnd="40px"
+            android:background="@drawable/img_air_status_3"
+            app:layout_constraintEnd_toEndOf="@+id/img_each_room_setting_dialog_contents"
+            app:layout_constraintTop_toBottomOf="@+id/img_line1"/>
+        
+
+        <ImageView
+            android:id="@+id/img_line2"
+            android:layout_width="688.9px"
+            android:layout_height="3px"
+            android:layout_marginTop="53.7px"
+            android:background="@drawable/img_line"
+            app:layout_constraintEnd_toEndOf="@+id/img_each_room_setting_dialog_contents"
+            app:layout_constraintStart_toStartOf="@+id/img_each_room_setting_dialog_contents"
+            app:layout_constraintTop_toBottomOf="@+id/tv_room_air_status" />
+
+        <TextView
+            android:id="@+id/tv_led_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="49px"
+            android:layout_marginTop="66.3px"
+            android:fontFamily="@font/apple_sd_gothic_neo_m"
+            android:text="LED밝기"
+            android:textColor="@color/white"
+            android:textSize="37px"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="@+id/img_each_room_setting_dialog_contents"
+            app:layout_constraintTop_toBottomOf="@+id/img_line2" />
+
+        <ImageView
+            android:id="@+id/img_arrow_back"
+            android:layout_width="22px"
+            android:layout_height="38.5px"
+            android:layout_marginStart="326px"
+            android:background="@drawable/arrow_back1"
+            app:layout_constraintTop_toTopOf="@+id/tv_led_light"
+            app:layout_constraintStart_toEndOf="@+id/tv_led_light"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_led_light"/>
+
+
+        <TextView
+            android:id="@+id/tv_led_light_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="83px"
+            android:fontFamily="@font/apple_sd_gothic_neo_b"
+            android:textStyle="bold"
+            android:textSize="39px"
+            android:text="1"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toEndOf="@id/img_arrow_back"
+            app:layout_constraintBottom_toBottomOf="@+id/img_arrow_back" />
+        
+        <ImageView
+            android:layout_width="22px"
+            android:layout_height="38.5px"
+            android:layout_marginTop="66.7px"
+            android:layout_marginEnd="40px"
+            android:background="@drawable/arrow_back2"
+            app:layout_constraintTop_toBottomOf="@+id/img_line2"
+            app:layout_constraintEnd_toEndOf="@+id/img_each_room_setting_dialog_contents"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

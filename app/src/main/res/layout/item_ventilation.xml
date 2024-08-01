@@ -2,16 +2,17 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_ventilation_background"
     android:layout_width="261px"
     android:layout_height="261px"
     android:background="@drawable/item_ventilation_border">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/img_each_room_air_status"
         android:layout_width="138px"
         android:layout_height="43px"
         android:layout_marginTop="38px"
-        android:background="@drawable/room_border_1"
+        android:background="@drawable/room_border_4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -25,10 +26,10 @@
         android:textColor="#000000"
         android:textSize="31px"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintBottom_toBottomOf="@+id/img_each_room_air_status"
+        app:layout_constraintEnd_toEndOf="@+id/img_each_room_air_status"
+        app:layout_constraintStart_toStartOf="@+id/img_each_room_air_status"
+        app:layout_constraintTop_toTopOf="@+id/img_each_room_air_status" />
 
     <ImageView
         android:id="@+id/room_vantilation_onoff"
@@ -38,6 +39,6 @@
         android:background="@drawable/ventilation_on"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/img_each_room_air_status" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

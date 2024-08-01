@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".fragment.ventilation.DialogEachRoomVentilationFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/fragment_each_room_ventilation_mode_box"
+            android:layout_width="881px"
+            android:layout_height="620px"
+            android:background="@drawable/dialog_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btn_close_each_room_ventilation_mode_dialog"
+            android:layout_width="24px"
+            android:layout_height="24px"
+            android:layout_margin="42px"
+            android:layout_marginTop="42px"
+            android:layout_marginEnd="42px"
+            android:background="@drawable/btn_close"
+            app:layout_constraintEnd_toEndOf="@id/fragment_each_room_ventilation_mode_box"
+            app:layout_constraintTop_toTopOf="@id/fragment_each_room_ventilation_mode_box" />
+
+        <ImageView
+            android:id="@+id/img_each_room_title"
+            android:layout_width="324px"
+            android:layout_height="93px"
+            android:layout_margin="82px"
+            android:background="@drawable/dialog_title_background"
+            app:layout_constraintEnd_toEndOf="@id/fragment_each_room_ventilation_mode_box"
+            app:layout_constraintStart_toStartOf="@id/fragment_each_room_ventilation_mode_box"
+            app:layout_constraintTop_toTopOf="@id/fragment_each_room_ventilation_mode_box" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/apple_sd_gothic_neo_sb"
+            android:text="각방환기"
+            android:textColor="@color/white"
+            android:textSize="50px"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="@+id/img_each_room_title"
+            app:layout_constraintEnd_toEndOf="@+id/img_each_room_title"
+            app:layout_constraintStart_toStartOf="@+id/img_each_room_title"
+            app:layout_constraintTop_toTopOf="@+id/img_each_room_title" />
+
+        <ImageView
+            android:id="@+id/img_each_room_dialog_contents"
+            android:layout_width="770px"
+            android:layout_height="334px"
+            android:layout_marginTop="61px"
+            android:background="@drawable/each_room_ventilation_inner_pop_up"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_each_room_title" />
+
+        <TextView
+            android:id="@+id/tv_auto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="49px"
+            android:layout_marginTop="69px"
+            android:fontFamily="@font/apple_sd_gothic_neo_m"
+            android:text="자동"
+            android:textColor="@color/white"
+            android:textSize="37px"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="@+id/img_each_room_dialog_contents"
+            app:layout_constraintTop_toTopOf="@+id/img_each_room_dialog_contents" />
+
+        <Switch
+            android:layout_width="132px"
+            android:layout_height="61px"
+            android:layout_marginTop="60.5px"
+            android:layout_marginEnd="51px"
+            android:layout_marginBottom="4dp"
+            android:thumb="@drawable/switch_thumb"
+            android:track="@drawable/switch_track"
+            app:layout_constraintEnd_toEndOf="@id/img_each_room_dialog_contents"
+            app:layout_constraintTop_toTopOf="@+id/img_each_room_dialog_contents" />
+
+        <ImageView
+            android:id="@+id/img_line1"
+            android:layout_width="688.9px"
+            android:layout_height="3px"
+            android:layout_marginTop="55.5px"
+            android:background="@drawable/img_line"
+            app:layout_constraintEnd_toEndOf="@+id/img_each_room_dialog_contents"
+            app:layout_constraintStart_toStartOf="@+id/img_each_room_dialog_contents"
+            app:layout_constraintTop_toBottomOf="@+id/tv_auto" />
+
+        <TextView
+            android:id="@+id/tv_natural_ventilation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="49px"
+            android:layout_marginTop="59.5px"
+            android:fontFamily="@font/apple_sd_gothic_neo_m"
+            android:text="수동"
+            android:textColor="@color/white"
+            android:textSize="37px"
+            android:textStyle="normal"
+            app:layout_constraintStart_toStartOf="@+id/img_each_room_dialog_contents"
+            app:layout_constraintTop_toBottomOf="@+id/img_line1" />
+
+        <Switch
+            android:layout_width="132px"
+            android:layout_height="61px"
+            android:layout_marginTop="60.5px"
+            android:layout_marginEnd="51px"
+            android:layout_marginBottom="4dp"
+            android:thumb="@drawable/switch_thumb"
+            android:track="@drawable/switch_track"
+            app:layout_constraintEnd_toEndOf="@id/img_each_room_dialog_contents"
+            app:layout_constraintTop_toBottomOf="@+id/img_line1" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

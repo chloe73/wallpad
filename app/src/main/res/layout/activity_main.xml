@@ -102,7 +102,7 @@
             app:srcCompat="@drawable/manual_btn" />
 
         <ImageView
-            android:id="@+id/imageButton3"
+            android:id="@+id/img_change_filter"
             android:layout_width="166px"
             android:layout_height="59px"
             android:layout_marginEnd="34px"
@@ -121,23 +121,23 @@
             android:textColor="@color/white"
             android:textSize="30px"
             android:textStyle="normal"
-            app:layout_constraintBottom_toBottomOf="@+id/imageButton3"
-            app:layout_constraintEnd_toEndOf="@+id/imageButton3"
-            app:layout_constraintStart_toStartOf="@+id/imageButton3"
-            app:layout_constraintTop_toTopOf="@+id/imageButton3" />
+            app:layout_constraintBottom_toBottomOf="@+id/img_change_filter"
+            app:layout_constraintEnd_toEndOf="@+id/img_change_filter"
+            app:layout_constraintStart_toStartOf="@+id/img_change_filter"
+            app:layout_constraintTop_toTopOf="@+id/img_change_filter" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/container_ventilation"
+        android:id="@+id/container_frag"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="132px"
+        android:layout_height="0dp"
+        android:layout_marginTop="36px"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

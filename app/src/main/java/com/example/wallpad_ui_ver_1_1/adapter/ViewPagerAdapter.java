@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -46,8 +45,15 @@ public class ViewPagerAdapter extends RecyclerView.Adapter<ViewPagerAdapter.View
         GridLayoutManager layoutManager = new GridLayoutManager(mContext, 3);
         holder.recyclerView.setLayoutManager(layoutManager);
 
-        VentilationAdapter ventilationAdapter = new VentilationAdapter();
+        VentilationAdapter ventilationAdapter = new VentilationAdapter(items);
         holder.recyclerView.setAdapter(ventilationAdapter);
+        ventilationAdapter.setItemClickListener(new VentilationAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int pos) {
+                // Log.d("Recycler view item click !!!!!", items.get(pos).getName());
+
+            }
+        });
 
         // 여기서 recyclerView item decoration 간격 설정
         holder.recyclerView.addItemDecoration(new SpacesItemDecoration(8));

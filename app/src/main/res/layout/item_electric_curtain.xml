@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="961px"
+    android:layout_height="515px"
+    android:layout_marginTop="10px"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_electric_curtain_item">
+
+    <TextView
+        android:id="@+id/tv_electric_curtain_room_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="거실"
+        android:fontFamily="@font/apple_sd_gothic_neo_b"
+        android:textStyle="bold"
+        android:textSize="57px"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="30px"
+        android:layout_marginStart="41px"
+        />
+
+    <TextView
+        android:id="@+id/tv_electric_curtain_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="62px"
+        android:layout_marginTop="45px"
+        android:text="열림"
+        android:fontFamily="@font/apple_sd_gothic_neo_m"
+        android:textStyle="bold"
+        android:textSize="31px"
+        android:textColor="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_electric_curtain_room_name"
+        />
+
+    <ImageView
+        android:layout_width="24.1px"
+        android:layout_height="42.2px"
+        android:layout_marginTop="42.9px"
+        android:layout_marginEnd="53.9px"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/icon_ionic_ios_arrow_back"/>
+
+    <SeekBar
+        android:splitTrack="false"
+        android:maxHeight="7px"
+        android:minHeight="7px"
+        android:id="@+id/seekBar_left"
+        android:layout_width="364px"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="130px"
+        android:layout_marginTop="143px"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/seek_bar"
+        android:thumb="@drawable/seek_bar_thumb"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:splitTrack="false"
+        android:maxHeight="7px"
+        android:minHeight="7px"
+        android:id="@+id/seekBar_right"
+        android:layout_width="364px"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="143px"
+        android:layout_marginEnd="131px"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/seek_bar"
+        android:rotationY="180"
+        android:thumb="@drawable/seek_bar_thumb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_left_curtain_item1"
+        android:layout_width="43.3px"
+        android:layout_height="203px"
+        android:layout_marginTop="11px"
+        android:layout_marginStart="137.2px"
+        android:background="@drawable/left_curtain_item"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_left" />
+
+    <ImageView
+        android:id="@+id/img_left_curtain_item2"
+        android:layout_width="43.3px"
+        android:layout_height="203px"
+        android:layout_marginTop="11px"
+        android:layout_marginLeft="-1px"
+        android:background="@drawable/left_curtain_item"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_left"
+        app:layout_constraintStart_toEndOf="@+id/img_left_curtain_item1"/>
+
+    <ImageView
+        android:id="@+id/img_left_curtain_item3"
+        android:layout_width="43.3px"
+        android:layout_height="203px"
+        android:layout_marginTop="11px"
+        android:layout_marginLeft="-1px"
+        android:background="@drawable/left_curtain_item"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_left"
+        app:layout_constraintStart_toEndOf="@+id/img_left_curtain_item2"/>
+
+    <ImageView
+        android:id="@+id/img_left_curtain_item4"
+        android:layout_width="43.3px"
+        android:layout_height="203px"
+        android:layout_marginTop="11px"
+        android:layout_marginLeft="-1px"
+        android:background="@drawable/left_curtain_item"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_left"
+        app:layout_constraintStart_toEndOf="@+id/img_left_curtain_item3"/>
+
+    <ImageView
+        android:id="@+id/img_left_curtain_item5"
+        android:layout_width="43.3px"
+        android:layout_height="203px"
+        android:layout_marginTop="11px"
+        android:layout_marginLeft="-1px"
+        android:background="@drawable/left_curtain_item"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_left"
+        app:layout_constraintStart_toEndOf="@+id/img_left_curtain_item4"/>
+
+    <ImageView
+        android:id="@+id/img_left_curtain_item6"
+        android:layout_width="43.3px"
+        android:layout_height="203px"
+        android:layout_marginTop="11px"
+        android:layout_marginLeft="-1px"
+        android:background="@drawable/left_curtain_item"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_left"
+        app:layout_constraintStart_toEndOf="@+id/img_left_curtain_item5"/>
+
+    <ImageView
+        android:id="@+id/img_left_curtain_item7"
+        android:layout_width="43.3px"
+        android:layout_height="203px"
+        android:layout_marginTop="11px"
+        android:layout_marginLeft="-1px"
+        android:background="@drawable/left_curtain_item"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_left"
+        app:layout_constraintStart_toEndOf="@+id/img_left_curtain_item6"/>
+
+    <ImageView
+        android:id="@+id/img_left_curtain_item8"
+        android:layout_width="43.3px"
+        android:layout_height="203px"
+        android:layout_marginTop="11px"
+        android:layout_marginLeft="-1px"
+        android:background="@drawable/left_curtain_item"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_left"
+        app:layout_constraintStart_toEndOf="@+id/img_left_curtain_item7"/>
+
+    <ImageView
+        android:id="@+id/img_right_curtain_item1"
+        android:layout_width="43.3px"
+        android:layout_height="203px"
+        android:layout_marginTop="11px"
+        android:layout_marginEnd="136.2px"
+        android:background="@drawable/right_curtain_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_right" />
+
+    <ImageView
+        android:id="@+id/img_right_curtain_item2"
+        android:layout_width="43.3px"
+        android:layout_height="203px"
+        android:layout_marginTop="11px"
+        android:layout_marginRight="-1px"
+        android:background="@drawable/right_curtain_item"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_right"
+        app:layout_constraintEnd_toStartOf="@+id/img_right_curtain_item1"/>
+
+    <ImageView
+        android:id="@+id/img_right_curtain_item3"
+        android:layout_width="43.3px"
+        android:layout_height="203px"
+        android:layout_marginTop="11px"
+        android:layout_marginRight="-1px"
+        android:background="@drawable/right_curtain_item"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_right"
+        app:layout_constraintEnd_toStartOf="@+id/img_right_curtain_item2"/>
+
+    <ImageView
+        android:id="@+id/img_right_curtain_item4"
+        android:layout_width="43.3px"
+        android:layout_height="203px"
+        android:layout_marginTop="11px"
+        android:layout_marginRight="-1px"
+        android:background="@drawable/right_curtain_item"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_right"
+        app:layout_constraintEnd_toStartOf="@+id/img_right_curtain_item3"/>
+
+    <ImageView
+        android:id="@+id/img_right_curtain_item5"
+        android:layout_width="43.3px"
+        android:layout_height="203px"
+        android:layout_marginTop="11px"
+        android:layout_marginRight="-1px"
+        android:background="@drawable/right_curtain_item"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_right"
+        app:layout_constraintEnd_toStartOf="@+id/img_right_curtain_item4"/>
+
+    <ImageView
+        android:id="@+id/img_right_curtain_item6"
+        android:layout_width="43.3px"
+        android:layout_height="203px"
+        android:layout_marginTop="11px"
+        android:layout_marginRight="-1px"
+        android:background="@drawable/right_curtain_item"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_right"
+        app:layout_constraintEnd_toStartOf="@+id/img_right_curtain_item5"/>
+
+    <ImageView
+        android:id="@+id/img_right_curtain_item7"
+        android:layout_width="43.3px"
+        android:layout_height="203px"
+        android:layout_marginTop="11px"
+        android:layout_marginRight="-1px"
+        android:background="@drawable/right_curtain_item"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_right"
+        app:layout_constraintEnd_toStartOf="@+id/img_right_curtain_item6"/>
+
+    <ImageView
+        android:id="@+id/img_right_curtain_item8"
+        android:layout_width="43.3px"
+        android:layout_height="203px"
+        android:layout_marginTop="11px"
+        android:layout_marginRight="-1px"
+        android:background="@drawable/right_curtain_item"
+        app:layout_constraintTop_toBottomOf="@+id/seekBar_right"
+        app:layout_constraintEnd_toStartOf="@+id/img_right_curtain_item7"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btn_close"
+        android:layout_width="247px"
+        android:layout_height="65px"
+        android:layout_marginStart="67px"
+        android:layout_marginBottom="33px"
+        android:background="@drawable/background_btn_electric_curtain_open_close_stop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/apple_sd_gothic_neo_m"
+            android:text="닫힘"
+            android:textColor="@color/white"
+            android:textSize="33px"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btn_open"
+        android:layout_width="247px"
+        android:layout_height="65px"
+        android:layout_marginBottom="33px"
+        android:background="@drawable/background_btn_electric_curtain_open_close_stop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_pause"
+        app:layout_constraintStart_toEndOf="@+id/btn_close">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/apple_sd_gothic_neo_m"
+            android:text="열림"
+            android:textColor="@color/white"
+            android:textSize="33px"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/btn_pause"
+        android:layout_width="247px"
+        android:layout_height="65px"
+        android:layout_marginEnd="65px"
+        android:layout_marginBottom="33px"
+        android:background="@drawable/background_btn_electric_curtain_open_close_stop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/apple_sd_gothic_neo_m"
+            android:text="일시정지"
+            android:textColor="@color/white"
+            android:textSize="33px"
+            android:textStyle="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
