@@ -27,13 +27,8 @@ public class ElectricCurtainFragment extends Fragment {
     private ArrayList<ElectricCurtainRoomItem> list;
     private Context context;
 
-    private SeekBar seekBarLeft;
-    private SeekBar seekBarRight;
-    private ImageView leftCurtain;
-    private ImageView rightCurtain;
-    private ConstraintLayout openButton;
-    private ConstraintLayout closeButton;
-    private ConstraintLayout pauseButton;
+    private ConstraintLayout totalRoomOpenButton;
+    private ConstraintLayout totalRoomCloseButton;
 
     public ElectricCurtainFragment(ArrayList<ElectricCurtainRoomItem> list) {
         this.list = list;
@@ -68,65 +63,22 @@ public class ElectricCurtainFragment extends Fragment {
         ElectricCurtainRecyclerViewAdapter electricCurtainRecyclerViewAdapter = new ElectricCurtainRecyclerViewAdapter(list);
         recyclerView.setAdapter(electricCurtainRecyclerViewAdapter);
 
-        // 전동 커튼 view 변수
+        totalRoomOpenButton = view.findViewById(R.id.whole_room_open_container);
+        totalRoomCloseButton = view.findViewById(R.id.whole_room_close_container);
 
-//        seekBarLeft.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//            @Override
-//            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//                adjustCurtains(progress);
-//            }
-//
-//            @Override
-//            public void onStartTrackingTouch(SeekBar seekBar) {}
-//
-//            @Override
-//            public void onStopTrackingTouch(SeekBar seekBar) {}
-//        });
-//
-//        seekBarRight.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-//            @Override
-//            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//                adjustCurtains(progress);
-//            }
-//
-//            @Override
-//            public void onStartTrackingTouch(SeekBar seekBar) {}
-//
-//            @Override
-//            public void onStopTrackingTouch(SeekBar seekBar) {}
-//        });
-    }
+        totalRoomOpenButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                electricCurtainRecyclerViewAdapter.onOpenClick(recyclerView);
+            }
+        });
 
-    private void openCurtains() {
-        int progress = 100; // Assuming 100 is fully open
-        seekBarLeft.setProgress(progress);
-        seekBarRight.setProgress(progress);
-        adjustCurtains(progress);
-    }
-
-    private void closeCurtains() {
-        int progress = 0; // Assuming 0 is fully closed
-        seekBarLeft.setProgress(progress);
-        seekBarRight.setProgress(progress);
-        adjustCurtains(progress);
-    }
-
-    private void pauseCurtains() {
-        // Pause functionality can be implemented as needed
-    }
-
-    private void adjustCurtains(int progress) {
-        int maxCurtainWidth = 346; // Initial width of curtains in px
-        int newWidth = (int) (maxCurtainWidth * (progress / 100.0));
-
-        ConstraintLayout.LayoutParams layoutParamsLeft = (ConstraintLayout.LayoutParams) leftCurtain.getLayoutParams();
-        ConstraintLayout.LayoutParams layoutParamsRight = (ConstraintLayout.LayoutParams) rightCurtain.getLayoutParams();
-
-        layoutParamsLeft.width = newWidth;
-        layoutParamsRight.width = newWidth;
-
-        leftCurtain.setLayoutParams(layoutParamsLeft);
-        rightCurtain.setLayoutParams(layoutParamsRight);
+        totalRoomCloseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                electricCurtainRecyclerViewAdapter.onCloseClick(recyclerView);
+            }
+        });
     }
 
 }

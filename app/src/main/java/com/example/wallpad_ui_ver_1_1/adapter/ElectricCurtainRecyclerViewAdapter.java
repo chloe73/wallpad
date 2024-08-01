@@ -27,6 +27,7 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
 
     private ArrayList<ElectricCurtainRoomItem> list;
     private OnCurtainControlClickListener listener;
+    private ViewHolder viewHolder;
     private ValueAnimator openLeftSeekBarAnimator;
     private ValueAnimator openRightSeekBarAnimator;
     private ValueAnimator closeLeftSeekBarAnimator;
@@ -36,39 +37,11 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
     private AnimatorSet closeLeftAnimatorSet;
     private AnimatorSet closeRightAnimatorSet;
 
-//    private TextView roomName;
-//    private TextView status; // 전동 커튼이 열려 있는지 닫혀 있는지 상태
-//
-//    private SeekBar seekBarLeft;
-//    private SeekBar seekBarRight;
-//
-//    private ArrayList<ImageView> leftCurtainImgList;
-//    private ImageView leftCurtain2;
-//    private ImageView leftCurtain3;
-//    private ImageView leftCurtain4;
-//    private ImageView leftCurtain5;
-//    private ImageView leftCurtain6;
-//    private ImageView leftCurtain7;
-//    private ImageView leftCurtain8;
-//
-//    private ArrayList<ImageView> rightCurtainImgList;
-//    private ImageView rightCurtain2;
-//    private ImageView rightCurtain3;
-//    private ImageView rightCurtain4;
-//    private ImageView rightCurtain5;
-//    private ImageView rightCurtain6;
-//    private ImageView rightCurtain7;
-//    private ImageView rightCurtain8;
-//
-//    private ConstraintLayout openButton;
-//    private ConstraintLayout closeButton;
-//    private ConstraintLayout pauseButton;
-
     public ElectricCurtainRecyclerViewAdapter(ArrayList<ElectricCurtainRoomItem> list) {
         this.list = list;
         this.listener = new OnCurtainControlClickListener() {
             @Override
-            public void onOpenClick(SeekBar seekBarLeft, SeekBar seekBarRight, ArrayList<ImageView> leftImgList, ArrayList<ImageView> rightImgList) {
+            public void onOpenClick(SeekBar seekBarLeft, SeekBar seekBarRight, ArrayList<ImageView> leftImgList, ArrayList<ImageView> rightImgList, int idx) {
                 Log.d("openButton 클릭 후, onOpenClick() 실행", " ================ ");
                 
                 openLeftSeekBarAnimator = ValueAnimator.ofInt(seekBarLeft.getProgress(), 10);
@@ -79,8 +52,6 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                 openLeftAnimatorSet = new AnimatorSet();
                 openRightAnimatorSet = new AnimatorSet();
 
-                //status.setText("여는 중");
-
                 openLeftSeekBarAnimator.addUpdateListener(animation -> {
                     int num = (int) openLeftSeekBarAnimator.getAnimatedValue();
                     seekBarLeft.setProgress(num);
@@ -89,10 +60,12 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                     int num = (int) openRightSeekBarAnimator.getAnimatedValue();
                     seekBarRight.setProgress(num);
                 });
+
                 openLeftSeekBarAnimator.start();
                 openRightSeekBarAnimator.start();
 
                 // left curtain 이미지 사라지는 애니메이션 적용
+                // rightcurtain 이미지 사라지는 애니메이션 적용
                 int delay = 0;
                 int duration = 2000; // 각 이미지가 사라지는 시간
 
@@ -107,10 +80,26 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                     alphaAnimator.addListener(new AnimatorListenerAdapter() {
                         @Override
                         public void onAnimationEnd(Animator animation) {
-                            img.setVisibility(View.INVISIBLE);
+//                            img.setVisibility(View.INVISIBLE);
                         }
                     });
                     openLeftAnimatorSet.playTogether(alphaAnimator);
+
+                    ImageView img2 = rightImgList.get(i);
+//                    openRightViewPropertyAnimator = img.animate().alpha(0f).setDuration(duration).setStartDelay(delay).withEndAction(() -> img.setVisibility(View.INVISIBLE));
+//                    openRightViewPropertyAnimator.start();
+
+                    ObjectAnimator alphaAnimator2 = ObjectAnimator.ofFloat(img2, "alpha", 1f, 0f);
+                    alphaAnimator2.setDuration(duration);
+                    alphaAnimator2.setStartDelay(delay);
+                    alphaAnimator2.addListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+//                            img2.setVisibility(View.INVISIBLE);
+                        }
+                    });
+
+                    openRightAnimatorSet.playTogether(alphaAnimator2);
 
                     delay += duration; // 다음 이미지의 애니메이션이 시작될 지연 시간 증가
                     if (i >= 6) {
@@ -124,43 +113,26 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                     }
                 }
 
-                // rightcurtain 이미지 사라지는 애니메이션 적용
-                delay = 0;
-                for (int i = 0; i < rightImgList.size(); i++) {
-                    ImageView img = rightImgList.get(i);
-//                    openRightViewPropertyAnimator = img.animate().alpha(0f).setDuration(duration).setStartDelay(delay).withEndAction(() -> img.setVisibility(View.INVISIBLE));
-//                    openRightViewPropertyAnimator.start();
-
-                    ObjectAnimator alphaAnimator = ObjectAnimator.ofFloat(img, "alpha", 1f, 0f);
-                    alphaAnimator.setDuration(duration);
-                    alphaAnimator.setStartDelay(delay);
-                    alphaAnimator.addListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            img.setVisibility(View.INVISIBLE);
-                        }
-                    });
-
-                    openRightAnimatorSet.playTogether(alphaAnimator);
-
-                    delay += duration;
-                    if (i >= 6) {
-                        delay -= 1600;
-                    }
-                    if (i <= 1) {
-                        delay += 500;
-                    }
-                    if (i == 3 || i == 4) {
-                        delay -= 700;
-                    }
-                }
-
                 openLeftAnimatorSet.start();
                 openRightAnimatorSet.start();
+
+//                if(openLeftAnimatorSet.isRunning()) {
+//                    list.get(idx).setStatus(2);
+//                    notifyItemChanged(idx);
+//                }
+
+                openLeftAnimatorSet.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        list.get(idx).setStatus(1); // 열림 상태로 업데이트
+//                        notifyDataSetChanged();
+                        notifyItemChanged(idx);
+                    }
+                });
             }
 
             @Override
-            public void onCloseClick(SeekBar seekBarLeft, SeekBar seekBarRight, ArrayList<ImageView> leftImgList, ArrayList<ImageView> rightImgList) {
+            public void onCloseClick(SeekBar seekBarLeft, SeekBar seekBarRight, ArrayList<ImageView> leftImgList, ArrayList<ImageView> rightImgList, int idx) {
                 closeLeftSeekBarAnimator = ValueAnimator.ofInt(seekBarLeft.getProgress(), 100);
                 closeRightSeekBarAnimator = ValueAnimator.ofInt(seekBarRight.getProgress(), 100);
                 closeLeftSeekBarAnimator.setDuration(14003); // Adjust duration as needed
@@ -169,16 +141,16 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                 closeLeftAnimatorSet = new AnimatorSet();
                 closeRightAnimatorSet = new AnimatorSet();
 
-                //status.setText("닫는 중");
-
                 closeLeftSeekBarAnimator.addUpdateListener(animation -> {
                     int num = (int) closeLeftSeekBarAnimator.getAnimatedValue();
                     seekBarLeft.setProgress(num);
                 });
+
                 closeRightSeekBarAnimator.addUpdateListener(animation -> {
                     int num = (int) closeRightSeekBarAnimator.getAnimatedValue();
                     seekBarRight.setProgress(num);
                 });
+
                 closeLeftSeekBarAnimator.start();
                 closeRightSeekBarAnimator.start();
 
@@ -189,8 +161,8 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                 // left curtain 이미지 생겨나는 애니메이션 적용
                 for (int i = 6; i >= 0; i--) {
                     ImageView img = leftImgList.get(i);
-//                    img.setVisibility(View.VISIBLE);
-//                    img.setAlpha(0f);
+
+                    img.setAlpha(0f);
 //                    img.animate().alpha(1f).setDuration(duration).setStartDelay(delay).start();
 
                     ObjectAnimator alphaAnimator = ObjectAnimator.ofFloat(img, "alpha", 0f, 1f);
@@ -209,8 +181,8 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                 delay = 0;
                 for (int i = rightImgList.size() - 1; i >= 0; i--) {
                     ImageView img = rightImgList.get(i);
-//                    img.setVisibility(View.VISIBLE);
-//                    img.setAlpha(0f);
+
+                    img.setAlpha(0f);
 //                    img.animate().alpha(1f).setDuration(duration).setStartDelay(delay).start();
                     ObjectAnimator alphaAnimator = ObjectAnimator.ofFloat(img, "alpha", 0f, 1f);
                     alphaAnimator.setDuration(duration);
@@ -226,10 +198,19 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
 
                 closeLeftAnimatorSet.start();
                 closeRightAnimatorSet.start();
+
+                closeLeftAnimatorSet.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        list.get(idx).setStatus(0); // 닫힘 상태로 업데이트
+                        notifyItemChanged(idx); // 리사이클러뷰 아이템 업데이트
+                    }
+                });
+
             }
 
             @Override
-            public void onPauseClick(SeekBar seekBarLeft, SeekBar seekBarRight, ArrayList<ImageView> leftImgList, ArrayList<ImageView> rightImgList) {
+            public void onPauseClick(SeekBar seekBarLeft, SeekBar seekBarRight, ArrayList<ImageView> leftImgList, ArrayList<ImageView> rightImgList, int idx) {
 
                 // 열림 버튼 누른 후, 일시정지 누른 경우
                 if (openLeftSeekBarAnimator != null && openRightSeekBarAnimator != null && openLeftSeekBarAnimator.isRunning() && openRightSeekBarAnimator.isRunning()) {
@@ -270,6 +251,33 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
         return list.size();
     }
 
+    public void onOpenClick(RecyclerView rv) {
+        for(int i=0;i< list.size();i++) {
+            ElectricCurtainRoomItem item  = list.get(i);
+            if(item.getStatus() == 0) {
+                // 닫힌 경우 열기
+                ViewHolder holder = (ViewHolder) rv.findViewHolderForAdapterPosition(i);
+                if (holder != null) {
+                    listener.onOpenClick(holder.getSeekBarLeft(), holder.getSeekBarRight(), holder.getLeftCurtainImgList(), holder.getRightCurtainImgList(), i);
+                }
+            }
+        }
+
+    }
+
+    public void onCloseClick(RecyclerView rv) {
+        for(int i=0;i< list.size();i++) {
+            ElectricCurtainRoomItem item  = list.get(i);
+            if(item.getStatus() == 1) {
+                // 열려있는 경우 닫기
+                ViewHolder holder = (ViewHolder) rv.findViewHolderForAdapterPosition(i);
+                if (holder != null) {
+                    listener.onCloseClick(holder.getSeekBarLeft(), holder.getSeekBarRight(), holder.getLeftCurtainImgList(), holder.getRightCurtainImgList(), i);
+                }
+            }
+        }
+    }
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView roomName;
         TextView status; // 전동 커튼이 열려 있는지 닫혀 있는지 상태
@@ -299,6 +307,34 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
         ConstraintLayout openButton;
         ConstraintLayout closeButton;
         ConstraintLayout pauseButton;
+
+        public TextView getStatusTextView() {
+            return status;
+        }
+
+        public SeekBar getSeekBarLeft() {
+            return seekBarLeft;
+        }
+
+        public SeekBar getSeekBarRight() {
+            return seekBarRight;
+        }
+
+        public ArrayList<ImageView> getLeftCurtainImgList() {
+            return leftCurtainImgList;
+        }
+
+        public ArrayList<ImageView> getRightCurtainImgList() {
+            return rightCurtainImgList;
+        }
+
+        public ConstraintLayout getOpenButton() {
+            return openButton;
+        }
+
+        public ConstraintLayout getCloseButton() {
+            return closeButton;
+        }
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -356,14 +392,14 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                     Log.d("openButton click!!!", getBindingAdapterPosition() + "");
                     // 사용자가 처음 이 화면에 진입했을 초기 경우,
                     if(openLeftSeekBarAnimator == null && openRightSeekBarAnimator == null) {
-                        listener.onOpenClick(seekBarLeft, seekBarRight, leftCurtainImgList, rightCurtainImgList);
+                        listener.onOpenClick(seekBarLeft, seekBarRight, leftCurtainImgList, rightCurtainImgList, getBindingAdapterPosition());
                     }
                     //
                     if(openLeftSeekBarAnimator != null && openRightSeekBarAnimator != null) {
                         if(!openLeftSeekBarAnimator.isRunning() && !openRightSeekBarAnimator.isRunning())
-                            listener.onOpenClick(seekBarLeft, seekBarRight, leftCurtainImgList, rightCurtainImgList);
+                            listener.onOpenClick(seekBarLeft, seekBarRight, leftCurtainImgList, rightCurtainImgList, getBindingAdapterPosition());
                         if(openLeftSeekBarAnimator.isPaused() && openRightSeekBarAnimator.isPaused()) {
-                            listener.onOpenClick(seekBarLeft, seekBarRight, leftCurtainImgList, rightCurtainImgList);
+                            listener.onOpenClick(seekBarLeft, seekBarRight, leftCurtainImgList, rightCurtainImgList, getBindingAdapterPosition());
                         }
                     }
                 }
@@ -374,20 +410,34 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                     if(closeLeftSeekBarAnimator == null && closeRightSeekBarAnimator == null
                         || (closeLeftSeekBarAnimator != null && closeRightSeekBarAnimator != null
                             && !closeLeftSeekBarAnimator.isRunning() && !closeRightSeekBarAnimator.isRunning()))
-                        listener.onCloseClick(seekBarLeft, seekBarRight, leftCurtainImgList, rightCurtainImgList);
+                        listener.onCloseClick(seekBarLeft, seekBarRight, leftCurtainImgList, rightCurtainImgList, getBindingAdapterPosition());
                 }
             });
             pauseButton.setOnClickListener(v -> {
                 if (listener != null && getBindingAdapterPosition() != RecyclerView.NO_POSITION) {
                     Log.d("pauseButton click!!!", getBindingAdapterPosition() + "");
-                    listener.onPauseClick(seekBarLeft, seekBarRight, leftCurtainImgList, rightCurtainImgList);
+                    listener.onPauseClick(seekBarLeft, seekBarRight, leftCurtainImgList, rightCurtainImgList, getBindingAdapterPosition());
                 }
             });
         }
 
         void onBind(ElectricCurtainRoomItem item) {
             roomName.setText(item.getRoomName());
-            status.setText(item.getStatus() == 1 ? "열림" : "닫힘");
+
+            switch (item.getStatus()) {
+                case 0:
+                    status.setText("닫힘");
+                    break;
+                case 1:
+                    status.setText("열림");
+                    break;
+                case 2:
+                    status.setText("여는 중");
+                    break;
+                case 3:
+                    status.setText("닫는 중");
+                    break;
+            }
 
             // 각 방의 커튼이 열려있는지 닫혀있는지 상태에 따라 커튼 이미지와 SeekBar progress 표시
             if (item.getStatus() == 1) {
@@ -395,43 +445,28 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                 seekBarRight.setProgress(10);
 
                 // leftCurtain 투명도 처리
-                leftCurtain2.setAlpha(0f);
-                leftCurtain3.setAlpha(0f);
-                leftCurtain4.setAlpha(0f);
-                leftCurtain5.setAlpha(0f);
-                leftCurtain6.setAlpha(0f);
-                leftCurtain7.setAlpha(0f);
-                leftCurtain8.setAlpha(0f);
+                for (ImageView img : leftCurtainImgList) {
+                    img.setAlpha(0f);
+                }
 
-                // leftCurtain 시리즈를 invisible 처리
-//                leftCurtain2.setVisibility(View.INVISIBLE);
-//                leftCurtain3.setVisibility(View.INVISIBLE);
-//                leftCurtain4.setVisibility(View.INVISIBLE);
-//                leftCurtain5.setVisibility(View.INVISIBLE);
-//                leftCurtain6.setVisibility(View.INVISIBLE);
-//                leftCurtain7.setVisibility(View.INVISIBLE);
-//                leftCurtain8.setVisibility(View.INVISIBLE);
-
-                rightCurtain2.setAlpha(0f);
-                rightCurtain3.setAlpha(0f);
-                rightCurtain4.setAlpha(0f);
-                rightCurtain5.setAlpha(0f);
-                rightCurtain6.setAlpha(0f);
-                rightCurtain7.setAlpha(0f);
-                rightCurtain8.setAlpha(0f);
-
-                // rightCurtain 시리즈를 invisible 처리
-//                rightCurtain2.setVisibility(View.INVISIBLE);
-//                rightCurtain3.setVisibility(View.INVISIBLE);
-//                rightCurtain4.setVisibility(View.INVISIBLE);
-//                rightCurtain5.setVisibility(View.INVISIBLE);
-//                rightCurtain6.setVisibility(View.INVISIBLE);
-//                rightCurtain7.setVisibility(View.INVISIBLE);
-//                rightCurtain8.setVisibility(View.INVISIBLE);
-            } else {
+                for (ImageView img : rightCurtainImgList) {
+                    img.setAlpha(0f);
+                }
+            }
+            else if (item.getStatus() == 0) {
                 seekBarLeft.setProgress(100);
                 seekBarRight.setProgress(100);
+
+                // leftCurtain 투명도 처리
+                for (ImageView img : leftCurtainImgList) {
+                    img.setAlpha(1f);
+                }
+
+                for (ImageView img : rightCurtainImgList) {
+                    img.setAlpha(1f);
+                }
             }
+
         }
 
     }

@@ -6,7 +6,7 @@ import android.widget.SeekBar;
 import java.util.ArrayList;
 
 public interface OnCurtainControlClickListener {
-    void onOpenClick(SeekBar seekBar, SeekBar seekBar2, ArrayList<ImageView> leftCurtainImgList, ArrayList<ImageView> rightCurtainImgList);
-    void onCloseClick(SeekBar seekBar, SeekBar seekBar2, ArrayList<ImageView> leftCurtainImgList, ArrayList<ImageView> rightCurtainImgList);
-    void onPauseClick(SeekBar seekBar, SeekBar seekBar2, ArrayList<ImageView> leftCurtainImgList, ArrayList<ImageView> rightCurtainImgList);
+    void onOpenClick(SeekBar seekBar, SeekBar seekBar2, ArrayList<ImageView> leftCurtainImgList, ArrayList<ImageView> rightCurtainImgList, int idx);
+    void onCloseClick(SeekBar seekBar, SeekBar seekBar2, ArrayList<ImageView> leftCurtainImgList, ArrayList<ImageView> rightCurtainImgList, int idx);
+    void onPauseClick(SeekBar seekBar, SeekBar seekBar2, ArrayList<ImageView> leftCurtainImgList, ArrayList<ImageView> rightCurtainImgList, int idx);
 }
