@@ -9,6 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,6 +60,12 @@ public class ElectricCurtainFragment extends Fragment {
         // RecyclerView Adapter 연결
         RecyclerView recyclerView = view.findViewById(R.id.rv_electric_curtain);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
+
+        // 리사이클러뷰 아이템 값 업데이트 시 화면 깜빡임 해결 코드
+        RecyclerView.ItemAnimator animator = recyclerView.getItemAnimator();
+        if (animator instanceof SimpleItemAnimator) {
+            ((SimpleItemAnimator) animator).setSupportsChangeAnimations(false);
+        }
 
         ElectricCurtainRecyclerViewAdapter electricCurtainRecyclerViewAdapter = new ElectricCurtainRecyclerViewAdapter(list);
         recyclerView.setAdapter(electricCurtainRecyclerViewAdapter);
