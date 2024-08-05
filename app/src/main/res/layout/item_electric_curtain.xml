@@ -45,14 +45,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:background="@drawable/icon_ionic_ios_arrow_back"/>
 
+    <ImageView
+        android:layout_width="40px"
+        android:layout_height="7px"
+        android:background="#464646"
+        android:layout_marginTop="6.2px"
+        android:layout_marginStart="352px"
+        app:layout_constraintStart_toStartOf="@+id/seekBar_left"
+        app:layout_constraintTop_toTopOf="@+id/seekBar_left"
+        />
+
     <SeekBar
         android:splitTrack="false"
         android:maxHeight="7px"
         android:minHeight="7px"
         android:id="@+id/seekBar_left"
-        android:layout_width="364px"
+        android:layout_width="380px"
         android:layout_height="wrap_content"
-        android:layout_marginStart="130px"
+        android:layout_marginStart="116px"
         android:layout_marginTop="143px"
         android:max="100"
         android:progress="0"
@@ -66,10 +76,10 @@
         android:maxHeight="7px"
         android:minHeight="7px"
         android:id="@+id/seekBar_right"
-        android:layout_width="364px"
+        android:layout_width="380px"
         android:layout_height="wrap_content"
         android:layout_marginTop="143px"
-        android:layout_marginEnd="131px"
+        android:layout_marginEnd="116px"
         android:max="100"
         android:progress="0"
         android:progressDrawable="@drawable/seek_bar"
@@ -83,7 +93,7 @@
         android:layout_width="43.3px"
         android:layout_height="203px"
         android:layout_marginTop="11px"
-        android:layout_marginStart="137.2px"
+        android:layout_marginStart="144.5px"
         android:background="@drawable/left_curtain_item"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar_left" />
@@ -163,8 +173,8 @@
         android:layout_width="43.3px"
         android:layout_height="203px"
         android:layout_marginTop="11px"
-        android:layout_marginEnd="136.2px"
-        android:background="@drawable/right_curtain_item"
+        android:layout_marginEnd="144.5px"
+        android:background="@drawable/left_curtain_item"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/seekBar_right" />
 
@@ -174,7 +184,7 @@
         android:layout_height="203px"
         android:layout_marginTop="11px"
         android:layout_marginRight="-1px"
-        android:background="@drawable/right_curtain_item"
+        android:background="@drawable/left_curtain_item"
         app:layout_constraintTop_toBottomOf="@+id/seekBar_right"
         app:layout_constraintEnd_toStartOf="@+id/img_right_curtain_item1"/>
 
@@ -184,7 +194,7 @@
         android:layout_height="203px"
         android:layout_marginTop="11px"
         android:layout_marginRight="-1px"
-        android:background="@drawable/right_curtain_item"
+        android:background="@drawable/left_curtain_item"
         app:layout_constraintTop_toBottomOf="@+id/seekBar_right"
         app:layout_constraintEnd_toStartOf="@+id/img_right_curtain_item2"/>
 
@@ -194,7 +204,7 @@
         android:layout_height="203px"
         android:layout_marginTop="11px"
         android:layout_marginRight="-1px"
-        android:background="@drawable/right_curtain_item"
+        android:background="@drawable/left_curtain_item"
         app:layout_constraintTop_toBottomOf="@+id/seekBar_right"
         app:layout_constraintEnd_toStartOf="@+id/img_right_curtain_item3"/>
 
@@ -204,7 +214,7 @@
         android:layout_height="203px"
         android:layout_marginTop="11px"
         android:layout_marginRight="-1px"
-        android:background="@drawable/right_curtain_item"
+        android:background="@drawable/left_curtain_item"
         app:layout_constraintTop_toBottomOf="@+id/seekBar_right"
         app:layout_constraintEnd_toStartOf="@+id/img_right_curtain_item4"/>
 
@@ -214,7 +224,7 @@
         android:layout_height="203px"
         android:layout_marginTop="11px"
         android:layout_marginRight="-1px"
-        android:background="@drawable/right_curtain_item"
+        android:background="@drawable/left_curtain_item"
         app:layout_constraintTop_toBottomOf="@+id/seekBar_right"
         app:layout_constraintEnd_toStartOf="@+id/img_right_curtain_item5"/>
 
@@ -224,7 +234,7 @@
         android:layout_height="203px"
         android:layout_marginTop="11px"
         android:layout_marginRight="-1px"
-        android:background="@drawable/right_curtain_item"
+        android:background="@drawable/left_curtain_item"
         app:layout_constraintTop_toBottomOf="@+id/seekBar_right"
         app:layout_constraintEnd_toStartOf="@+id/img_right_curtain_item6"/>
 
@@ -234,7 +244,7 @@
         android:layout_height="203px"
         android:layout_marginTop="11px"
         android:layout_marginRight="-1px"
-        android:background="@drawable/right_curtain_item"
+        android:background="@drawable/left_curtain_item"
         app:layout_constraintTop_toBottomOf="@+id/seekBar_right"
         app:layout_constraintEnd_toStartOf="@+id/img_right_curtain_item7"/>
 
