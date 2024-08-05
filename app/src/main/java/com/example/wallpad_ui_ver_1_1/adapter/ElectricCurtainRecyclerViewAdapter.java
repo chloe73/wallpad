@@ -255,34 +255,27 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
     }
 
     private void updateCloseImageAlpha(ArrayList<ImageView> imgList, int progress) {
-        float alpha = 0f;
+        float alpha = 1f;
 
         if (progress >= 10 && progress <= 22) {
-            alpha = 1f;
             ImageView img = imgList.get(6);
             img.setAlpha(alpha);
         } else if (progress >= 23 && progress <= 35) {
-            alpha = 1f;
             ImageView img = imgList.get(5);
             img.setAlpha(alpha);
         } else if (progress >= 36 && progress <= 48) {
-            alpha = 1f;
             ImageView img = imgList.get(4);
             img.setAlpha(alpha);
         } else if (progress >= 49 && progress <= 61) {
-            alpha = 1f;
             ImageView img = imgList.get(3);
             img.setAlpha(alpha);
         } else if (progress >= 62 && progress <= 74) {
-            alpha = 1f;
             ImageView img = imgList.get(2);
             img.setAlpha(alpha);
         } else if (progress >= 75 && progress <= 87) {
-            alpha = 1f;
             ImageView img = imgList.get(1);
             img.setAlpha(alpha);
         } else if (progress >= 88 && progress <= 100) {
-            alpha = 1f;
             ImageView img = imgList.get(0);
             img.setAlpha(alpha);
         }
@@ -290,34 +283,27 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
 
     private void updateOpenImageAlpha(ArrayList<ImageView> imgList, int progress) {
 
-        float alpha = 1f;
+        float alpha = 0f;
 
         if (progress >= 10 && progress <= 22) {
-            alpha = 0f;
             ImageView img = imgList.get(6);
             img.setAlpha(alpha);
         } else if (progress >= 23 && progress <= 35) {
-            alpha = 0f;
             ImageView img = imgList.get(5);
             img.setAlpha(alpha);
         } else if (progress >= 36 && progress <= 48) {
-            alpha = 0f;
             ImageView img = imgList.get(4);
             img.setAlpha(alpha);
         } else if (progress >= 49 && progress <= 61) {
-            alpha = 0f;
             ImageView img = imgList.get(3);
             img.setAlpha(alpha);
         } else if (progress >= 62 && progress <= 74) {
-            alpha = 0f;
             ImageView img = imgList.get(2);
             img.setAlpha(alpha);
         } else if (progress >= 75 && progress <= 87) {
-            alpha = 0f;
             ImageView img = imgList.get(1);
             img.setAlpha(alpha);
         } else if (progress >= 88 && progress <= 100) {
-            alpha = 0f;
             ImageView img = imgList.get(0);
             img.setAlpha(alpha);
         }
