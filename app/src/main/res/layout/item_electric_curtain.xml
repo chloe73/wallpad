@@ -254,7 +254,7 @@
         android:layout_height="65px"
         android:layout_marginStart="67px"
         android:layout_marginBottom="33px"
-        android:background="@drawable/background_btn_electric_curtain_open_close_stop"
+        android:background="@drawable/btn_effect_electric_curtain_open_close_stop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -278,7 +278,7 @@
         android:layout_width="247px"
         android:layout_height="65px"
         android:layout_marginBottom="33px"
-        android:background="@drawable/background_btn_electric_curtain_open_close_stop"
+        android:background="@drawable/btn_effect_electric_curtain_open_close_stop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btn_pause"
         app:layout_constraintStart_toEndOf="@+id/btn_close">
@@ -304,7 +304,7 @@
         android:layout_height="65px"
         android:layout_marginEnd="65px"
         android:layout_marginBottom="33px"
-        android:background="@drawable/background_btn_electric_curtain_open_close_stop"
+        android:background="@drawable/btn_effect_electric_curtain_open_close_stop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
