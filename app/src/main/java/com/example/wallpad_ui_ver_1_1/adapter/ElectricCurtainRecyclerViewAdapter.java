@@ -16,9 +16,13 @@ import androidx.core.animation.AnimatorListenerAdapter;
 import androidx.core.animation.AnimatorSet;
 import androidx.core.animation.ObjectAnimator;
 import androidx.core.animation.ValueAnimator;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wallpad_ui_ver_1_1.R;
+import com.example.wallpad_ui_ver_1_1.fragment.electricCurtain.ElectricCurtainPopUpFragment;
 import com.example.wallpad_ui_ver_1_1.item.ElectricCurtainRoomItem;
 
 import java.util.ArrayList;
@@ -254,6 +258,7 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
         return list.size();
     }
 
+    // progress value에 따른 커튼 이미지 보이게 하기
     private void updateCloseImageAlpha(ArrayList<ImageView> imgList, int progress) {
         float alpha = 1f;
 
@@ -281,6 +286,7 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
         }
     }
 
+    // progress value에 따른 커튼 이미지 안 보이게 하기
     private void updateOpenImageAlpha(ArrayList<ImageView> imgList, int progress) {
 
         float alpha = 0f;
@@ -354,6 +360,9 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+
+        TextView innerRoomName;
+
         TextView roomName;
         TextView status; // 전동 커튼이 열려 있는지 닫혀 있는지 상태
 
@@ -367,7 +376,6 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
         ImageView leftCurtain5;
         ImageView leftCurtain6;
         ImageView leftCurtain7;
-
         ImageView leftCurtain8;
 
         ArrayList<ImageView> rightCurtainImgList;
@@ -382,6 +390,8 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
         ConstraintLayout openButton;
         ConstraintLayout closeButton;
         ConstraintLayout pauseButton;
+
+        ImageView moreBtn;
 
         public void setOpenLeftSeekBarAnimator(ValueAnimator openLeftSeekBarAnimator) {
             this.openLeftSeekBarAnimator = openLeftSeekBarAnimator;
@@ -488,8 +498,12 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            innerRoomName = itemView.findViewById(R.id.tv_inner_room_name);
+
             roomName = itemView.findViewById(R.id.tv_electric_curtain_room_name);
             status = itemView.findViewById(R.id.tv_electric_curtain_status);
+
+            moreBtn = itemView.findViewById(R.id.btn_more_view_in_rv_electric_curtain);
 
             seekBarLeft = itemView.findViewById(R.id.seekBar_left);
             seekBarRight = itemView.findViewById(R.id.seekBar_right);
@@ -579,9 +593,26 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                     }
                 }
             });
+
+            // rv 더 보기 버튼 클릭 이벤트
+            moreBtn.setOnClickListener(view -> {
+                FragmentActivity activity = (FragmentActivity) view.getContext();
+                FragmentManager fragmentManager = activity.getSupportFragmentManager();
+                ElectricCurtainPopUpFragment popUpFragment = new ElectricCurtainPopUpFragment(list);
+
+                FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+                transaction.add(android.R.id.content, popUpFragment)
+                        .addToBackStack(null)
+                        .commit();
+
+                Log.d("rv 더 보기 버튼 클릭함 !!!!!!!!!!!!!", "잘 작동하는거뉘?????????");
+            });
         }
 
         void onBind(ElectricCurtainRoomItem item) {
+            innerRoomName.setText(item.getRoomName());
+
             roomName.setText(item.getRoomName());
 
             switch (item.getStatus()) {

@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         list.add(new ElectricCurtainRoomItem("거실", 1, 10));
         list.add(new ElectricCurtainRoomItem("침실1", 0, 100));
         list.add(new ElectricCurtainRoomItem("침실2", 1, 10));
-        list.add(new ElectricCurtainRoomItem("침실3", 0, 100));
+        list.add(new ElectricCurtainRoomItem("침실3", 0,100));
 
         return list;
     }
