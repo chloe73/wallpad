@@ -361,8 +361,6 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView innerRoomName;
-
         TextView roomName;
         TextView status; // 전동 커튼이 열려 있는지 닫혀 있는지 상태
 
@@ -498,8 +496,6 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            innerRoomName = itemView.findViewById(R.id.tv_inner_room_name);
-
             roomName = itemView.findViewById(R.id.tv_electric_curtain_room_name);
             status = itemView.findViewById(R.id.tv_electric_curtain_status);
 
@@ -611,8 +607,6 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
         }
 
         void onBind(ElectricCurtainRoomItem item) {
-            innerRoomName.setText(item.getRoomName());
-
             roomName.setText(item.getRoomName());
 
             switch (item.getStatus()) {

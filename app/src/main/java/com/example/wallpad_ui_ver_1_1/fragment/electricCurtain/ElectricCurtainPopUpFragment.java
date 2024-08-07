@@ -52,6 +52,7 @@ public class ElectricCurtainPopUpFragment extends Fragment {
             ((SimpleItemAnimator) animator).setSupportsChangeAnimations(false);
         }
 
+
         ElectricCurtainRecyclerViewAdapter electricCurtainRecyclerViewAdapter = new ElectricCurtainRecyclerViewAdapter(list);
         recyclerView.setAdapter(electricCurtainRecyclerViewAdapter);
     }
