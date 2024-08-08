@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.wallpad_ui_ver_1_1.fragment.electricCurtain.ElectricCurtainFragment;
 import com.example.wallpad_ui_ver_1_1.fragment.ventilation.DialogFilterChangeFragment;
 import com.example.wallpad_ui_ver_1_1.fragment.ventilation.VentilationFragment;
+import com.example.wallpad_ui_ver_1_1.item.ElectricCurtainItem;
 import com.example.wallpad_ui_ver_1_1.item.ElectricCurtainRoomItem;
 
 import java.util.ArrayList;
@@ -67,11 +68,25 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<ElectricCurtainRoomItem> getElectricCurtain() {
         ArrayList<ElectricCurtainRoomItem> list = new ArrayList<>();
 
+
+        ArrayList<ElectricCurtainItem> a = new ArrayList<>();
+        a.add(new ElectricCurtainItem(0,100));
+        a.add(new ElectricCurtainItem(0,100));
+
         // 0 : 닫힘, 1: 열림
-        list.add(new ElectricCurtainRoomItem("거실", 1, 10));
-        list.add(new ElectricCurtainRoomItem("침실1", 0, 100));
-        list.add(new ElectricCurtainRoomItem("침실2", 1, 10));
-        list.add(new ElectricCurtainRoomItem("침실3", 0,100));
+        list.add(new ElectricCurtainRoomItem("거실", 1, 10, a));
+
+        a = new ArrayList<>();
+        a.add(new ElectricCurtainItem(1,10));
+        a.add(new ElectricCurtainItem(1,10));
+
+        list.add(new ElectricCurtainRoomItem("안방", 0, 100, a));
+        a = new ArrayList<>();
+        a.add(new ElectricCurtainItem(1,10));
+        list.add(new ElectricCurtainRoomItem("침실2", 1, 10, a));
+        a = new ArrayList<>();
+        a.add(new ElectricCurtainItem(0,100));
+        list.add(new ElectricCurtainRoomItem("침실3", 0,100, a));
 
         return list;
     }

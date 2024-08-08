@@ -8,7 +8,16 @@ public class ElectricCurtainRoomItem {
     private int status; // 커튼이 열려 있는지, 닫혀 있는지, 여는 중인지
     // 0 : 닫힘, 1: 열림, 2: 여는 중
     private int value;
-    private ArrayList<ElectricCurtain> curtainList;
+
+    public ArrayList<ElectricCurtainItem> getCurtainList() {
+        return curtainList;
+    }
+
+    public void setCurtainList(ArrayList<ElectricCurtainItem> curtainList) {
+        this.curtainList = curtainList;
+    }
+
+    private ArrayList<ElectricCurtainItem> curtainList;
 
     public int getValue() {
         return value;
@@ -18,10 +27,11 @@ public class ElectricCurtainRoomItem {
         this.value = value;
     }
 
-    public ElectricCurtainRoomItem(String roomName, int status, int value) {
+    public ElectricCurtainRoomItem(String roomName, int status, int value, ArrayList<ElectricCurtainItem> list) {
         this.roomName = roomName;
         this.status = status;
         this.value = value;
+        this.curtainList = list;
     }
 
     public String getRoomName() {

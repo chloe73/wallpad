@@ -250,6 +250,9 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.onBind(list.get(position));
+        Log.d("adapter onBindViewHolder() test", "test!!!!!!!!!!!!!!");
+        ElectricCurtainInRoomRecyclerViewAdapter electricCurtainInRoomRecyclerViewAdapter = new ElectricCurtainInRoomRecyclerViewAdapter(list, position);
+
     }
 
     @Override
@@ -594,7 +597,7 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
             moreBtn.setOnClickListener(view -> {
                 FragmentActivity activity = (FragmentActivity) view.getContext();
                 FragmentManager fragmentManager = activity.getSupportFragmentManager();
-                ElectricCurtainPopUpFragment popUpFragment = new ElectricCurtainPopUpFragment(list);
+                ElectricCurtainPopUpFragment popUpFragment = new ElectricCurtainPopUpFragment(list, getBindingAdapterPosition());
 
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
