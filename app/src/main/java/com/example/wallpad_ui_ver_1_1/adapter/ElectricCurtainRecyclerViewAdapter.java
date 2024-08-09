@@ -37,7 +37,7 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
         this.list = list;
         this.listener = new OnCurtainControlClickListener() {
             @Override
-            public void onOpenClick(SeekBar seekBarLeft, SeekBar seekBarRight, ArrayList<ImageView> leftImgList, ArrayList<ImageView> rightImgList, int idx, ValueAnimator openLeftSeekBarAnimator, ValueAnimator openRightSeekBarAnimator, AnimatorSet openLeftAnimatorSet, AnimatorSet openRightAnimatorSet) {
+            public void onOpenClick(SeekBar seekBarLeft, SeekBar seekBarRight, ArrayList<ImageView> leftImgList, ArrayList<ImageView> rightImgList, int idx, ValueAnimator openLeftSeekBarAnimator, ValueAnimator openRightSeekBarAnimator) {
                 Log.d("openButton 클릭 후, onOpenClick() 실행", " ================ ");
 
                 // 이미 열려있는 경우에는 동작 안하게 함.
@@ -135,7 +135,7 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
             }
 
             @Override
-            public void onCloseClick(SeekBar seekBarLeft, SeekBar seekBarRight, ArrayList<ImageView> leftImgList, ArrayList<ImageView> rightImgList, int idx, ValueAnimator closeLeftSeekBarAnimator, ValueAnimator closeRightSeekBarAnimator, AnimatorSet closeLeftAnimatorSet, AnimatorSet closeRightAnimatorSet) {
+            public void onCloseClick(SeekBar seekBarLeft, SeekBar seekBarRight, ArrayList<ImageView> leftImgList, ArrayList<ImageView> rightImgList, int idx, ValueAnimator closeLeftSeekBarAnimator, ValueAnimator closeRightSeekBarAnimator) {
                 // 이미 닫혀있는 경우에는 동작 안하게 함.
                 if (seekBarLeft.getProgress() == 100 && seekBarRight.getProgress() == 100) {
                     Log.d("seekBarLeft.getProgress() == 100", "seekBarLeft.getProgress() == 100");
@@ -224,7 +224,7 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
             }
 
             @Override
-            public void onPauseClick(SeekBar seekBarLeft, SeekBar seekBarRight, ArrayList<ImageView> leftImgList, ArrayList<ImageView> rightImgList, int idx, ValueAnimator leftSeekBarAnimator, ValueAnimator rightSeekBarAnimator, AnimatorSet leftAnimatorSet, AnimatorSet rightAnimatorSet) {
+            public void onPauseClick(SeekBar seekBarLeft, SeekBar seekBarRight, ArrayList<ImageView> leftImgList, ArrayList<ImageView> rightImgList, int idx, ValueAnimator leftSeekBarAnimator, ValueAnimator rightSeekBarAnimator) {
                 // 각 아이템 상태가 '여는 중' or '닫는 중'인 경우에만 동작함.
                 if (list.get(idx).getStatus() == 2 || list.get(idx).getStatus() == 3) {
                     list.get(idx).setStatus(4);
@@ -232,9 +232,6 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
 
                     leftSeekBarAnimator.pause();
                     rightSeekBarAnimator.pause();
-
-                    leftAnimatorSet.pause();
-                    rightAnimatorSet.pause();
                 }
             }
         };
@@ -265,25 +262,25 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
     private void updateCloseImageAlpha(ArrayList<ImageView> imgList, int progress) {
         float alpha = 1f;
 
-        if (progress >= 10 && progress <= 22) {
+        if (progress >= 17 && progress <= 22) {
             ImageView img = imgList.get(6);
             img.setAlpha(alpha);
-        } else if (progress >= 23 && progress <= 35) {
+        } else if (progress >= 28 && progress <= 35) {
             ImageView img = imgList.get(5);
             img.setAlpha(alpha);
-        } else if (progress >= 36 && progress <= 48) {
+        } else if (progress >= 41 && progress <= 48) {
             ImageView img = imgList.get(4);
             img.setAlpha(alpha);
-        } else if (progress >= 49 && progress <= 61) {
+        } else if (progress >= 54 && progress <= 61) {
             ImageView img = imgList.get(3);
             img.setAlpha(alpha);
-        } else if (progress >= 62 && progress <= 74) {
+        } else if (progress >= 67 && progress <= 74) {
             ImageView img = imgList.get(2);
             img.setAlpha(alpha);
-        } else if (progress >= 75 && progress <= 87) {
+        } else if (progress >= 81 && progress <= 87) {
             ImageView img = imgList.get(1);
             img.setAlpha(alpha);
-        } else if (progress >= 88 && progress <= 100) {
+        } else if (progress >= 93 && progress <= 100) {
             ImageView img = imgList.get(0);
             img.setAlpha(alpha);
         }
@@ -294,25 +291,25 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
 
         float alpha = 0f;
 
-        if (progress >= 10 && progress <= 22) {
+        if (progress >= 10 && progress <= 17) {
             ImageView img = imgList.get(6);
             img.setAlpha(alpha);
-        } else if (progress >= 23 && progress <= 35) {
+        } else if (progress >= 23 && progress <= 30) {
             ImageView img = imgList.get(5);
             img.setAlpha(alpha);
-        } else if (progress >= 36 && progress <= 48) {
+        } else if (progress >= 36 && progress <= 43) {
             ImageView img = imgList.get(4);
             img.setAlpha(alpha);
-        } else if (progress >= 49 && progress <= 61) {
+        } else if (progress >= 49 && progress <= 56) {
             ImageView img = imgList.get(3);
             img.setAlpha(alpha);
-        } else if (progress >= 62 && progress <= 74) {
+        } else if (progress >= 62 && progress <= 69) {
             ImageView img = imgList.get(2);
             img.setAlpha(alpha);
-        } else if (progress >= 75 && progress <= 87) {
+        } else if (progress >= 75 && progress <= 82) {
             ImageView img = imgList.get(1);
             img.setAlpha(alpha);
-        } else if (progress >= 88 && progress <= 100) {
+        } else if (progress >= 88 && progress <= 95) {
             ImageView img = imgList.get(0);
             img.setAlpha(alpha);
         }
@@ -327,13 +324,13 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                 // 닫힌 경우 열기
                 ViewHolder holder = (ViewHolder) rv.findViewHolderForAdapterPosition(i);
                 if (holder != null) {
-                    if (holder.getOpenLeftSeekBarAnimator() == null && holder.getOpenLeftAnimatorSet() != null) {
+                    if (holder.getOpenLeftSeekBarAnimator() == null) {
                         Log.d("holder.getOpenLeftSeekBarAnimator() == null", "null 모야ㅑ야야야");
                         ValueAnimator openLeftSeekBarAnimator = ValueAnimator.ofInt(holder.getSeekBarLeft().getProgress(), 10);
                         ValueAnimator openRightSeekBarAnimator = ValueAnimator.ofInt(holder.getSeekBarRight().getProgress(), 10);
-                        listener.onOpenClick(holder.getSeekBarLeft(), holder.getSeekBarRight(), holder.getLeftCurtainImgList(), holder.getRightCurtainImgList(), i, openLeftSeekBarAnimator, openRightSeekBarAnimator, holder.getOpenLeftAnimatorSet(), holder.getOpenRightAnimatorSet());
+                        listener.onOpenClick(holder.getSeekBarLeft(), holder.getSeekBarRight(), holder.getLeftCurtainImgList(), holder.getRightCurtainImgList(), i, openLeftSeekBarAnimator, openRightSeekBarAnimator);
                     } else {
-                        listener.onOpenClick(holder.getSeekBarLeft(), holder.getSeekBarRight(), holder.getLeftCurtainImgList(), holder.getRightCurtainImgList(), i, holder.getOpenLeftSeekBarAnimator(), holder.getOpenRightSeekBarAnimator(), holder.getOpenLeftAnimatorSet(), holder.getOpenRightAnimatorSet());
+                        listener.onOpenClick(holder.getSeekBarLeft(), holder.getSeekBarRight(), holder.getLeftCurtainImgList(), holder.getRightCurtainImgList(), i, holder.getOpenLeftSeekBarAnimator(), holder.getOpenRightSeekBarAnimator());
                     }
                 }
             }
@@ -352,9 +349,9 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                     if (holder.getCloseLeftSeekBarAnimator() == null) {
                         ValueAnimator closeLeftSeekBarAnimator = ValueAnimator.ofInt(holder.getSeekBarLeft().getProgress(), 100);
                         ValueAnimator closeRightSeekBarAnimator = ValueAnimator.ofInt(holder.getSeekBarRight().getProgress(), 100);
-                        listener.onCloseClick(holder.getSeekBarLeft(), holder.getSeekBarRight(), holder.getLeftCurtainImgList(), holder.getRightCurtainImgList(), i, closeLeftSeekBarAnimator, closeRightSeekBarAnimator, holder.getCloseLeftAnimatorSet(), holder.getCloseRightAnimatorSet());
+                        listener.onCloseClick(holder.getSeekBarLeft(), holder.getSeekBarRight(), holder.getLeftCurtainImgList(), holder.getRightCurtainImgList(), i, closeLeftSeekBarAnimator, closeRightSeekBarAnimator);
                     } else {
-                        listener.onCloseClick(holder.getSeekBarLeft(), holder.getSeekBarRight(), holder.getLeftCurtainImgList(), holder.getRightCurtainImgList(), i, holder.getCloseLeftSeekBarAnimator(), holder.getCloseRightSeekBarAnimator(), holder.getCloseLeftAnimatorSet(), holder.getCloseRightAnimatorSet());
+                        listener.onCloseClick(holder.getSeekBarLeft(), holder.getSeekBarRight(), holder.getLeftCurtainImgList(), holder.getRightCurtainImgList(), i, holder.getCloseLeftSeekBarAnimator(), holder.getCloseRightSeekBarAnimator());
                     }
 
                 }
@@ -410,22 +407,6 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
             this.closeRightSeekBarAnimator = closeRightSeekBarAnimator;
         }
 
-        public void setOpenLeftAnimatorSet(AnimatorSet openLeftAnimatorSet) {
-            this.openLeftAnimatorSet = openLeftAnimatorSet;
-        }
-
-        public void setOpenRightAnimatorSet(AnimatorSet openRightAnimatorSet) {
-            this.openRightAnimatorSet = openRightAnimatorSet;
-        }
-
-        public void setCloseLeftAnimatorSet(AnimatorSet closeLeftAnimatorSet) {
-            this.closeLeftAnimatorSet = closeLeftAnimatorSet;
-        }
-
-        public void setCloseRightAnimatorSet(AnimatorSet closeRightAnimatorSet) {
-            this.closeRightAnimatorSet = closeRightAnimatorSet;
-        }
-
         public ValueAnimator getOpenLeftSeekBarAnimator() {
             return openLeftSeekBarAnimator;
         }
@@ -442,31 +423,10 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
             return closeRightSeekBarAnimator;
         }
 
-        public AnimatorSet getOpenLeftAnimatorSet() {
-            return openLeftAnimatorSet;
-        }
-
-        public AnimatorSet getOpenRightAnimatorSet() {
-            return openRightAnimatorSet;
-        }
-
-        public AnimatorSet getCloseLeftAnimatorSet() {
-            return closeLeftAnimatorSet;
-        }
-
-        public AnimatorSet getCloseRightAnimatorSet() {
-            return closeRightAnimatorSet;
-        }
-
         ValueAnimator openLeftSeekBarAnimator;
         ValueAnimator openRightSeekBarAnimator;
         ValueAnimator closeLeftSeekBarAnimator;
         ValueAnimator closeRightSeekBarAnimator;
-
-        AnimatorSet openLeftAnimatorSet;
-        AnimatorSet openRightAnimatorSet;
-        AnimatorSet closeLeftAnimatorSet;
-        AnimatorSet closeRightAnimatorSet;
 
         public TextView getStatusTextView() {
             return status;
@@ -544,12 +504,6 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
             rightCurtainImgList.add(rightCurtain3);
             rightCurtainImgList.add(rightCurtain2);
 
-            openLeftAnimatorSet = new AnimatorSet();
-            openRightAnimatorSet = new AnimatorSet();
-
-            closeLeftAnimatorSet = new AnimatorSet();
-            closeRightAnimatorSet = new AnimatorSet();
-
             // seekbar 터치 비활성화 처리
             seekBarLeft.setEnabled(false);
             seekBarRight.setEnabled(false);
@@ -563,7 +517,7 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
 
                     // 아이템 상태가 '닫힘' 상태일 때 동작함.
                     if (list.get(getBindingAdapterPosition()).getStatus() == 0 || list.get(getBindingAdapterPosition()).getStatus() == 4) {
-                        listener.onOpenClick(seekBarLeft, seekBarRight, leftCurtainImgList, rightCurtainImgList, getBindingAdapterPosition(), openLeftSeekBarAnimator, openRightSeekBarAnimator, openLeftAnimatorSet, openRightAnimatorSet);
+                        listener.onOpenClick(seekBarLeft, seekBarRight, leftCurtainImgList, rightCurtainImgList, getBindingAdapterPosition(), openLeftSeekBarAnimator, openRightSeekBarAnimator);
                     }
                 }
             });
@@ -575,7 +529,7 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
 
                     // 아이템 상태가 '열림'상태일 때 동작함.
                     if (list.get(getBindingAdapterPosition()).getStatus() == 1 || list.get(getBindingAdapterPosition()).getStatus() == 4)
-                        listener.onCloseClick(seekBarLeft, seekBarRight, leftCurtainImgList, rightCurtainImgList, getBindingAdapterPosition(), closeLeftSeekBarAnimator, closeRightSeekBarAnimator, closeLeftAnimatorSet, closeRightAnimatorSet);
+                        listener.onCloseClick(seekBarLeft, seekBarRight, leftCurtainImgList, rightCurtainImgList, getBindingAdapterPosition(), closeLeftSeekBarAnimator, closeRightSeekBarAnimator);
                 }
             });
 
@@ -584,11 +538,11 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                     Log.d("pauseButton click!!!", getBindingAdapterPosition() + "");
                     // 여는 중일 때, 중단한 경우
                     if (list.get(getBindingAdapterPosition()).getStatus() == 2) {
-                        listener.onPauseClick(seekBarLeft, seekBarRight, leftCurtainImgList, rightCurtainImgList, getBindingAdapterPosition(), openLeftSeekBarAnimator, openRightSeekBarAnimator, openLeftAnimatorSet, openRightAnimatorSet);
+                        listener.onPauseClick(seekBarLeft, seekBarRight, leftCurtainImgList, rightCurtainImgList, getBindingAdapterPosition(), openLeftSeekBarAnimator, openRightSeekBarAnimator);
                     }
                     // 닫는 중일 때, 중단한 경우
                     else if (list.get(getBindingAdapterPosition()).getStatus() == 3) {
-                        listener.onPauseClick(seekBarLeft, seekBarRight, leftCurtainImgList, rightCurtainImgList, getBindingAdapterPosition(), closeLeftSeekBarAnimator, closeRightSeekBarAnimator, closeLeftAnimatorSet, closeRightAnimatorSet);
+                        listener.onPauseClick(seekBarLeft, seekBarRight, leftCurtainImgList, rightCurtainImgList, getBindingAdapterPosition(), closeLeftSeekBarAnimator, closeRightSeekBarAnimator);
                     }
                 }
             });
@@ -601,7 +555,7 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
 
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
-                transaction.add(android.R.id.content, popUpFragment)
+                transaction.add(R.id.main_container, popUpFragment)
                         .addToBackStack(null)
                         .commit();
 
