@@ -8,6 +8,7 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
@@ -84,17 +85,50 @@ public class ElectricCurtainPopUpFragment extends Fragment {
         // pop up fragment의 가장 바깥쪽 영역 터치했을 때, 창 없애기
         ConstraintLayout constOuter = view.findViewById(R.id.const_electric_curtain_pop_up_outer);
 
-
         // 왼쪽 화살표
         ImageView leftArrow = view.findViewById(R.id.btn_left_item);
+        leftArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 현재 index 값이 0보다 큰 경우에만 동작한다.
+                if(idx > 0) {
+                    // 인덱스를 감소시키고 새로운 프래그먼트를 생성
+                    ElectricCurtainPopUpFragment newFragment = new ElectricCurtainPopUpFragment(list, idx - 1);
+                    FragmentManager fragmentManager = getParentFragmentManager();
 
+                    // 프래그먼트를 교체하고 이전 스택을 지우기
+                    fragmentManager.beginTransaction()
+                            .replace(android.R.id.content, newFragment)
+                            .commit();
+                }
+            }
+        });
 
         // 오른쪽 화살표
         ImageView rightArrow = view.findViewById(R.id.btn_right_item);
+        rightArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // 현재 index 값이 list 크기보다 -1 미만인 경우에만 동작한다.
+                if(idx < list.size()-1) {
+                    // 인덱스를 증가시키고 새로운 프래그먼트를 생성
+                    ElectricCurtainPopUpFragment newFragment = new ElectricCurtainPopUpFragment(list, idx + 1);
+                    FragmentManager fragmentManager = getParentFragmentManager();
+
+                    // 프래그먼트를 교체하고 이전 스택을 지우기
+                    fragmentManager.beginTransaction()
+                            .replace(android.R.id.content, newFragment)
+                            .addToBackStack(null)
+                            .commit();
+                }
+            }
+        });
     }
 
     private void closeFragment() {
         FragmentManager fragmentManager = getParentFragmentManager();
-        fragmentManager.popBackStack();
+
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.remove(this).commit();
     }
 }
