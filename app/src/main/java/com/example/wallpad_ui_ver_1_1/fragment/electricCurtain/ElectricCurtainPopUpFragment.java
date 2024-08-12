@@ -160,8 +160,6 @@ public class ElectricCurtainPopUpFragment extends Fragment {
             innerRoomName.requestFocus();  // EditText에 포커스 요청
             innerRoomName.setSelection(innerRoomName.getText().length());  // 기존 텍스트 끝에 커서 위치 설정
 
-
-
             // 키보드 표시
             InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             if (imm != null) {
@@ -235,10 +233,11 @@ public class ElectricCurtainPopUpFragment extends Fragment {
                     ElectricCurtainPopUpFragment newFragment = new ElectricCurtainPopUpFragment(list, idx + 1);
                     FragmentManager fragmentManager = getParentFragmentManager();
 
+                    fragmentManager.popBackStackImmediate();
+
                     // 프래그먼트를 교체하고 이전 스택을 지우기
                     fragmentManager.beginTransaction()
                             .replace(android.R.id.content, newFragment)
-                            .addToBackStack(null)
                             .commit();
                 }
             }

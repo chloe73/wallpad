@@ -16,6 +16,7 @@ import androidx.core.animation.AnimatorListenerAdapter;
 import androidx.core.animation.AnimatorSet;
 import androidx.core.animation.ObjectAnimator;
 import androidx.core.animation.ValueAnimator;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -594,7 +595,8 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                 for (ImageView img : rightCurtainImgList) {
                     img.setAlpha(0f);
                 }
-            } else if (item.getStatus() == 0) {
+            }
+            else if (item.getStatus() == 0) {
                 if (seekBarLeft != null && seekBarLeft.getProgress() == 100) return;
 
                 seekBarLeft.setProgress(100);

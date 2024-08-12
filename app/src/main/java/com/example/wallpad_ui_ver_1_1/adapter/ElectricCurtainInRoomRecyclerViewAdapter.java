@@ -147,7 +147,6 @@ public class ElectricCurtainInRoomRecyclerViewAdapter extends RecyclerView.Adapt
 
     // progress value에 따른 커튼 이미지 안 보이게 하기
     private void updateOpenImageAlpha(ArrayList<ImageView> imgList, int progress) {
-
         float alpha = 0f;
 
         if (progress >= 10 && progress <= 17) {
@@ -333,7 +332,7 @@ public class ElectricCurtainInRoomRecyclerViewAdapter extends RecyclerView.Adapt
 
             }
             else if(inItem.getValue() <= 40) {
-                
+
             }
 
             // 열려 있는 경우,
