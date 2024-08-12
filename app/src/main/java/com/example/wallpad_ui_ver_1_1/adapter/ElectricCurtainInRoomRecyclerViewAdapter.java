@@ -25,6 +25,12 @@ public class ElectricCurtainInRoomRecyclerViewAdapter extends RecyclerView.Adapt
     private ElectricCurtainRoomItem item;
     private int idx;
     private OnCurtainControlClickListener listener;
+    private boolean buttonsEnabled = true;
+
+    public void setButtonsEnabled(boolean enabled) {
+        buttonsEnabled = enabled;
+        notifyDataSetChanged();
+    }
 
     public ElectricCurtainInRoomRecyclerViewAdapter(ArrayList<ElectricCurtainRoomItem> list, int idx) {
         this.list = list;
@@ -129,6 +135,9 @@ public class ElectricCurtainInRoomRecyclerViewAdapter extends RecyclerView.Adapt
     @Override
     public void onBindViewHolder(@NonNull ElectricCurtainInRoomRecyclerViewAdapter.ViewHolder holder, int position) {
         holder.onBind(item, item.getCurtainList().get(position), position);
+        holder.closeButton.setEnabled(buttonsEnabled);
+        holder.openButton.setEnabled(buttonsEnabled);
+        holder.pauseButton.setEnabled(buttonsEnabled);
     }
 
     @Override

@@ -21,6 +21,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -38,6 +39,7 @@ public class ElectricCurtainPopUpFragment extends Fragment {
 
     private ArrayList<ElectricCurtainRoomItem> list;
     private int idx;
+    private ElectricCurtainInRoomRecyclerViewAdapter electricCurtainInRoomRecyclerViewAdapter;
 
     public ElectricCurtainPopUpFragment(ArrayList<ElectricCurtainRoomItem> list, int idx) {
         this.list = list;
@@ -60,12 +62,13 @@ public class ElectricCurtainPopUpFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         EditText innerRoomName = view.findViewById(R.id.tv_inner_room_name);
 
         RecyclerView recyclerView = view.findViewById(R.id.rv_electric_curtain_in_room);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        ElectricCurtainInRoomRecyclerViewAdapter electricCurtainInRoomRecyclerViewAdapter = new ElectricCurtainInRoomRecyclerViewAdapter(list, idx);
+        electricCurtainInRoomRecyclerViewAdapter = new ElectricCurtainInRoomRecyclerViewAdapter(list, idx);
         recyclerView.setAdapter(electricCurtainInRoomRecyclerViewAdapter);
 
         // 리사이클러뷰 아이템 값 업데이트 시 화면 깜빡임 해결 코드
@@ -113,6 +116,7 @@ public class ElectricCurtainPopUpFragment extends Fragment {
                         innerRoomName.setFocusableInTouchMode(false);
                         Log.d("화면의 다른 부분 터치!", "화면의 다른 부분 터치 !");
                         isKeyboardHidden[0] = true; // 키보드가 숨겨졌음을 기록
+                        electricCurtainInRoomRecyclerViewAdapter.setButtonsEnabled(true);
                         return true;
                     }
                 }
@@ -156,11 +160,16 @@ public class ElectricCurtainPopUpFragment extends Fragment {
             innerRoomName.requestFocus();  // EditText에 포커스 요청
             innerRoomName.setSelection(innerRoomName.getText().length());  // 기존 텍스트 끝에 커서 위치 설정
 
+
+
             // 키보드 표시
             InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
             if (imm != null) {
                 imm.showSoftInput(innerRoomName, InputMethodManager.SHOW_IMPLICIT);
             }
+
+            electricCurtainInRoomRecyclerViewAdapter.setButtonsEnabled(false);
+            Log.d("리사이클러뷰 버튼 비활성화 !", "비활성화 !");
 
             // 키보드가 표시된 후 다시 터치 상태를 초기화
             isKeyboardHidden[0] = false;
@@ -175,6 +184,8 @@ public class ElectricCurtainPopUpFragment extends Fragment {
                     innerRoomName.setEnabled(false);
                     innerRoomName.setFocusable(false);
                     innerRoomName.setFocusableInTouchMode(false);
+
+                    electricCurtainInRoomRecyclerViewAdapter.setButtonsEnabled(true);
                     Log.d("키보드에서 enter키 누름 !", "키보드에서 enter키 누름 !");
                     //
                     return true;
@@ -240,4 +251,5 @@ public class ElectricCurtainPopUpFragment extends Fragment {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.remove(this).commit();
     }
+
 }

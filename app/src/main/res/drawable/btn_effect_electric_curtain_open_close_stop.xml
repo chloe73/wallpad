@@ -10,6 +10,10 @@
         android:drawable="@drawable/background_btn_electric_curtain_open_close_stop"/>
 
     <item
+        android:state_enabled="false"
+        android:drawable="@drawable/background_btn_electric_curtain_open_close_stop"/>
+
+    <item
         android:state_enabled="true"
         android:drawable="@drawable/background_btn_electric_curtain_open_close_stop"/>
 </selector>
