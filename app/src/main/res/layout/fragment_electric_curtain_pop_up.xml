@@ -8,17 +8,8 @@
     android:background="#BF000000"
     tools:context=".fragment.electricCurtain.ElectricCurtainPopUpFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/inner_const_electric_curtain_pop_up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/const_electric_curtain_pop_up_outer2"
+            android:id="@+id/inner_const_electric_curtain_pop_up"
             android:layout_width="881px"
             android:layout_height="1144px"
             android:background="@drawable/rv_item_electric_curtain_round_background"
@@ -97,12 +88,11 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <!-- 전동커튼 rv item -->
             <androidx.core.widget.NestedScrollView
+                android:id="@+id/nestedScrollView_electric_curtain"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_marginTop="41px"
@@ -125,7 +115,5 @@
             </androidx.core.widget.NestedScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

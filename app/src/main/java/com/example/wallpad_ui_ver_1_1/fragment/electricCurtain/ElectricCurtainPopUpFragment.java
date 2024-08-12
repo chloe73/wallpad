@@ -77,6 +77,23 @@ public class ElectricCurtainPopUpFragment extends Fragment {
         // 터치 상태를 추적할 플래그
         boolean[] isKeyboardHidden = {false};
 
+        // 키보드가 활성화되었을 때, 리사이클러뷰 영역 터치해도 키보드 내려가게 하기
+        recyclerView.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN && innerRoomName.hasFocus()) {
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(innerRoomName.getWindowToken(), 0);
+                }
+                innerRoomName.clearFocus();
+                innerRoomName.setEnabled(false);
+                innerRoomName.setFocusable(false);
+                innerRoomName.setFocusableInTouchMode(false);
+                isKeyboardHidden[0] = true;
+                return true;
+            }
+            return false;
+        });
+
         // 키보드와 팝업 창을 제어할 리스너 설정
         View.OnTouchListener touchListener = (v, event) -> {
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -125,29 +142,6 @@ public class ElectricCurtainPopUpFragment extends Fragment {
         // 리스너를 전체 레이아웃에 적용
         View constOuter = view.findViewById(R.id.const_electric_curtain_pop_up_outer);
         constOuter.setOnTouchListener(touchListener);
-
-//        // pop up fragment의 가장 바깥쪽 영역 터치했을 때, 창 없애기
-//        View constOuter = view.findViewById(R.id.const_electric_curtain_pop_up_outer);
-//        View innerView = view.findViewById(R.id.inner_const_electric_curtain_pop_up);
-//
-//        constOuter.setOnTouchListener((v, event) -> {
-//            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-//                // 터치된 좌표가 innerLayout 내부에 있는지 확인
-//                int[] location = new int[2];
-//                innerView.getLocationOnScreen(location);
-//                int x = location[0];
-//                int y = location[1];
-//                int width = innerView.getWidth();
-//                int height = innerView.getHeight();
-//
-//                if (event.getRawX() < x || event.getRawX() > x + width || event.getRawY() < y || event.getRawY() > y + height) {
-//                    // innerLayout 외부를 터치한 경우
-//                    closeFragment();
-//                    return true;
-//                }
-//            }
-//            return false;
-//        });
 
         // 현재 방 이름 세팅
         innerRoomName.setText(list.get(idx).getRoomName());
