@@ -329,8 +329,12 @@ public class ElectricCurtainInRoomRecyclerViewAdapter extends RecyclerView.Adapt
             String name = item.getRoomName()+" 커튼 " + (position+1);
             curtainName.setText(name);
 
-//            seekBarLeft.setProgress(item.getCurtainList().get(position).getValue());
-//            seekBarRight.setProgress(item.getCurtainList().get(position).getValue());
+            if (inItem.getValue() <= 27) {
+
+            }
+            else if(inItem.getValue() <= 40) {
+                
+            }
 
             // 열려 있는 경우,
             if(inItem.getStatus() == 1) {
