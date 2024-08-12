@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -59,6 +60,7 @@ public class ElectricCurtainPopUpFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        EditText innerRoomName = view.findViewById(R.id.tv_inner_room_name);
 
         RecyclerView recyclerView = view.findViewById(R.id.rv_electric_curtain_in_room);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -72,11 +74,84 @@ public class ElectricCurtainPopUpFragment extends Fragment {
             ((SimpleItemAnimator) animator).setSupportsChangeAnimations(false);
         }
 
+        // 터치 상태를 추적할 플래그
+        boolean[] isKeyboardHidden = {false};
+
+        // 키보드와 팝업 창을 제어할 리스너 설정
+        View.OnTouchListener touchListener = (v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                // 첫 번째 터치: 키보드가 보이는 상태에서 화면을 터치했을 때
+                if (innerRoomName.hasFocus() && !isKeyboardHidden[0]) {
+                    Rect outRect = new Rect();
+                    innerRoomName.getGlobalVisibleRect(outRect);
+                    if (!outRect.contains((int) event.getRawX(), (int) event.getRawY())) {
+                        if (imm != null) {
+                            imm.hideSoftInputFromWindow(innerRoomName.getWindowToken(), 0);
+                        }
+                        innerRoomName.clearFocus();
+                        innerRoomName.setEnabled(false);
+                        innerRoomName.setFocusable(false);
+                        innerRoomName.setFocusableInTouchMode(false);
+                        Log.d("화면의 다른 부분 터치!", "화면의 다른 부분 터치 !");
+                        isKeyboardHidden[0] = true; // 키보드가 숨겨졌음을 기록
+                        return true;
+                    }
+                }
+
+                // 두 번째 터치:
+                // 키보드가 활성화되어 있지 않고 그냥 기본인 상태에서도 -> 화면을 터치하면 창이 닫혀야 함.
+                // 키보드가 이미 숨겨진 상태에서 화면을 터치했을 때 팝업을 닫음
+                if ( (!innerRoomName.hasFocus() && !isKeyboardHidden[0]) || isKeyboardHidden[0]) {
+                    View innerView = view.findViewById(R.id.inner_const_electric_curtain_pop_up);
+                    int[] location = new int[2];
+                    innerView.getLocationOnScreen(location);
+                    int x = location[0];
+                    int y = location[1];
+                    int width = innerView.getWidth();
+                    int height = innerView.getHeight();
+
+                    // innerLayout 외부를 터치한 경우 팝업 닫기
+                    if (event.getRawX() < x || event.getRawX() > x + width || event.getRawY() < y || event.getRawY() > y + height) {
+                        closeFragment();
+                        return true;
+                    }
+                }
+            }
+            return false;
+        };
+
+        // 리스너를 전체 레이아웃에 적용
+        View constOuter = view.findViewById(R.id.const_electric_curtain_pop_up_outer);
+        constOuter.setOnTouchListener(touchListener);
+
+//        // pop up fragment의 가장 바깥쪽 영역 터치했을 때, 창 없애기
+//        View constOuter = view.findViewById(R.id.const_electric_curtain_pop_up_outer);
+//        View innerView = view.findViewById(R.id.inner_const_electric_curtain_pop_up);
+//
+//        constOuter.setOnTouchListener((v, event) -> {
+//            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//                // 터치된 좌표가 innerLayout 내부에 있는지 확인
+//                int[] location = new int[2];
+//                innerView.getLocationOnScreen(location);
+//                int x = location[0];
+//                int y = location[1];
+//                int width = innerView.getWidth();
+//                int height = innerView.getHeight();
+//
+//                if (event.getRawX() < x || event.getRawX() > x + width || event.getRawY() < y || event.getRawY() > y + height) {
+//                    // innerLayout 외부를 터치한 경우
+//                    closeFragment();
+//                    return true;
+//                }
+//            }
+//            return false;
+//        });
+
         // 현재 방 이름 세팅
-        EditText innerRoomName = view.findViewById(R.id.tv_inner_room_name);
         innerRoomName.setText(list.get(idx).getRoomName());
         innerRoomName.setEnabled(false);
-
 
         // 방 이름 수정 버튼
         ImageView btnEditRoomName = view.findViewById(R.id.btn_edit_room_name);
@@ -93,20 +168,29 @@ public class ElectricCurtainPopUpFragment extends Fragment {
                 imm.showSoftInput(innerRoomName, InputMethodManager.SHOW_IMPLICIT);
             }
 
-            // 포커스가 변경되었을 때(즉, 다른 곳을 클릭했을 때) 키보드 숨기기
-            innerRoomName.setOnFocusChangeListener((v12, hasFocus) -> {
-                Log.d("포커스 변경 ?", "포커스 변경 ~~~~~~~~~~~~~");
-                if (!hasFocus) {
+            // 키보드가 표시된 후 다시 터치 상태를 초기화
+            isKeyboardHidden[0] = false;
+
+            // Enter 키를 눌렀을 때 EditText 비활성화 처리
+            innerRoomName.setOnEditorActionListener((v12, actionId, event) -> {
+                if (actionId == EditorInfo.IME_ACTION_DONE || actionId == EditorInfo.IME_ACTION_NEXT || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
                     if (imm != null) {
                         imm.hideSoftInputFromWindow(innerRoomName.getWindowToken(), 0);
                     }
+                    innerRoomName.clearFocus();
+                    innerRoomName.setEnabled(false);
+                    innerRoomName.setFocusable(false);
+                    innerRoomName.setFocusableInTouchMode(false);
+                    Log.d("키보드에서 enter키 누름 !", "키보드에서 enter키 누름 !");
+                    //
+                    return true;
                 }
+                return false;
             });
-
         });
+
         // close 버튼
         ImageView closeBtn = view.findViewById(R.id.btn_close_in_electric_curtain_rv_item);
-
         closeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -114,29 +198,6 @@ public class ElectricCurtainPopUpFragment extends Fragment {
                 // 현재 프래그먼트 창 닫기
                 closeFragment();
             }
-        });
-
-        // pop up fragment의 가장 바깥쪽 영역 터치했을 때, 창 없애기
-        View constOuter = view.findViewById(R.id.const_electric_curtain_pop_up_outer);
-        View innerView = view.findViewById(R.id.inner_const_electric_curtain_pop_up);
-
-        constOuter.setOnTouchListener((v, event) -> {
-            if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                // 터치된 좌표가 innerLayout 내부에 있는지 확인
-                int[] location = new int[2];
-                innerView.getLocationOnScreen(location);
-                int x = location[0];
-                int y = location[1];
-                int width = innerView.getWidth();
-                int height = innerView.getHeight();
-
-                if (event.getRawX() < x || event.getRawX() > x + width || event.getRawY() < y || event.getRawY() > y + height) {
-                    // innerLayout 외부를 터치한 경우
-                    closeFragment();
-                    return true;
-                }
-            }
-            return false;
         });
 
         // 왼쪽 화살표
