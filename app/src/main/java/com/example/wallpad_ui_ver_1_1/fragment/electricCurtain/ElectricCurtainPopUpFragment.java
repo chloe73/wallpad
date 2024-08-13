@@ -32,6 +32,7 @@ import com.example.wallpad_ui_ver_1_1.R;
 import com.example.wallpad_ui_ver_1_1.adapter.ElectricCurtainInRoomRecyclerViewAdapter;
 import com.example.wallpad_ui_ver_1_1.adapter.ElectricCurtainRecyclerViewAdapter;
 import com.example.wallpad_ui_ver_1_1.item.ElectricCurtainRoomItem;
+import com.example.wallpad_ui_ver_1_1.util.CustomLinearLayoutManager;
 
 import java.util.ArrayList;
 
@@ -66,7 +67,9 @@ public class ElectricCurtainPopUpFragment extends Fragment {
         EditText innerRoomName = view.findViewById(R.id.tv_inner_room_name);
 
         RecyclerView recyclerView = view.findViewById(R.id.rv_electric_curtain_in_room);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        // CustomLinearLayoutManager 사용
+        CustomLinearLayoutManager layoutManager = new CustomLinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
 
         electricCurtainInRoomRecyclerViewAdapter = new ElectricCurtainInRoomRecyclerViewAdapter(list, idx);
         recyclerView.setAdapter(electricCurtainInRoomRecyclerViewAdapter);
@@ -75,6 +78,14 @@ public class ElectricCurtainPopUpFragment extends Fragment {
         RecyclerView.ItemAnimator animator = recyclerView.getItemAnimator();
         if (animator instanceof SimpleItemAnimator) {
             ((SimpleItemAnimator) animator).setSupportsChangeAnimations(false);
+        }
+
+        // 아이템 개수에 따른 스크롤 제어
+        if (electricCurtainInRoomRecyclerViewAdapter.getItemCount() <= 2) {
+            layoutManager.setScrollEnabled(false); // 스크롤 불가
+            Log.d("스크롤 불가 처리", " 스크롤 불가 처리 했잖아!!!!!!!!!!");
+        } else {
+            layoutManager.setScrollEnabled(true); // 스크롤 가능
         }
 
         // 터치 상태를 추적할 플래그

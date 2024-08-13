@@ -8,112 +8,103 @@
     android:background="#BF000000"
     tools:context=".fragment.electricCurtain.ElectricCurtainPopUpFragment">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/inner_const_electric_curtain_pop_up"
+        android:layout_width="881px"
+        android:layout_height="1144px"
+        android:background="@drawable/rv_item_electric_curtain_round_background"
+        android:paddingBottom="60px"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btn_close_in_electric_curtain_rv_item"
+            android:layout_width="24px"
+            android:layout_height="24px"
+            android:layout_marginTop="42px"
+            android:layout_marginEnd="51px"
+            android:background="@drawable/btn_close"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btn_edit_room_name"
+            android:layout_width="94px"
+            android:layout_height="94px"
+            android:layout_marginStart="51px"
+            android:layout_marginTop="84px"
+            android:background="@drawable/btn_edit_room_name"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/inner_const_electric_curtain_pop_up"
-            android:layout_width="881px"
-            android:layout_height="1144px"
-            android:background="@drawable/rv_item_electric_curtain_round_background"
-            android:paddingBottom="60px"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/container_room_name"
+            android:layout_width="468px"
+            android:layout_height="93px"
+            android:layout_marginTop="83px"
+            android:background="@drawable/rv_item_electric_curtain_room_name_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/btn_close_in_electric_curtain_rv_item"
-                android:layout_width="24px"
-                android:layout_height="24px"
-                android:layout_marginTop="42px"
-                android:layout_marginEnd="51px"
-                android:background="@drawable/btn_close"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/btn_left_item"
+                android:layout_width="24.1px"
+                android:layout_height="42.2px"
+                android:layout_marginStart="27.9px"
+                android:background="@drawable/icon_ionic_ios_arrow_back2"
+                android:scaleX="-1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <EditText
+                android:id="@+id/tv_inner_room_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:fontFamily="@font/apple_sd_gothic_neo_sb"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                android:text="방이름"
+                android:textColor="@color/white"
+                android:textSize="50px"
+                android:textStyle="normal"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/btn_right_item"
+                app:layout_constraintStart_toStartOf="@+id/btn_left_item"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/btn_edit_room_name"
-                android:layout_width="94px"
-                android:layout_height="94px"
-                android:layout_marginStart="51px"
-                android:layout_marginTop="84px"
-                android:background="@drawable/btn_edit_room_name"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/container_room_name"
-                android:layout_width="468px"
-                android:layout_height="93px"
-                android:layout_marginTop="83px"
-                android:background="@drawable/rv_item_electric_curtain_room_name_background"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/btn_left_item"
-                    android:layout_width="24.1px"
-                    android:layout_height="42.2px"
-                    android:layout_marginStart="27.9px"
-                    android:background="@drawable/icon_ionic_ios_arrow_back2"
-                    android:scaleX="-1"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-
-                <EditText
-                    android:id="@+id/tv_inner_room_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:focusableInTouchMode="true"
-                    android:fontFamily="@font/apple_sd_gothic_neo_sb"
-                    android:imeOptions="actionDone"
-                    android:inputType="text"
-                    android:text="방이름"
-                    android:textColor="@color/white"
-                    android:textSize="50px"
-                    android:textStyle="normal"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/btn_right_item"
-                    app:layout_constraintStart_toStartOf="@+id/btn_left_item"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/btn_right_item"
-                    android:layout_width="24.1px"
-                    android:layout_height="42.2px"
-                    android:layout_marginEnd="26.9px"
-                    android:background="@drawable/icon_ionic_ios_arrow_back2"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!-- 전동커튼 rv item -->
-            <androidx.core.widget.NestedScrollView
-                android:id="@+id/nestedScrollView_electric_curtain"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="41px"
+                android:id="@+id/btn_right_item"
+                android:layout_width="24.1px"
+                android:layout_height="42.2px"
+                android:layout_marginEnd="26.9px"
+                android:background="@drawable/icon_ionic_ios_arrow_back2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/container_room_name">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_electric_curtain_in_room"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:paddingLeft="51px"
-                    android:paddingBottom="7px"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/container_room_name"
-                    tools:listitem="@layout/item_electric_curtain_in_curtain" />
-            </androidx.core.widget.NestedScrollView>
-
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- 전동커튼 rv item -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_electric_curtain_in_room"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="41px"
+            android:paddingLeft="51px"
+            android:scrollbars="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/container_room_name"
+            tools:listitem="@layout/item_electric_curtain_in_curtain" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

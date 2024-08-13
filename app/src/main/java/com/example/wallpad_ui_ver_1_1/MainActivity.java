@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<ElectricCurtainItem> a = new ArrayList<>();
         a.add(new ElectricCurtainItem(1,10));
         a.add(new ElectricCurtainItem(1,10));
+        a.add(new ElectricCurtainItem(1,10));
 
         // 0 : 닫힘, 1: 열림
         list.add(new ElectricCurtainRoomItem("거실", 1, 10, a));

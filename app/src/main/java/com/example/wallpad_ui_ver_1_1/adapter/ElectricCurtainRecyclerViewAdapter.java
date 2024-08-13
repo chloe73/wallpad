@@ -47,8 +47,8 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                     return;
                 }
 
-                openLeftSeekBarAnimator.setDuration(14003); // Adjust duration as needed
-                openRightSeekBarAnimator.setDuration(14003);
+                openLeftSeekBarAnimator.setDuration(10000); // Adjust duration as needed
+                openRightSeekBarAnimator.setDuration(10000);
 
                 openLeftSeekBarAnimator.addUpdateListener(animation -> {
                     int num = (int) openLeftSeekBarAnimator.getAnimatedValue();
@@ -143,8 +143,8 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                     return;
                 }
 
-                closeLeftSeekBarAnimator.setDuration(14003); // Adjust duration as needed
-                closeRightSeekBarAnimator.setDuration(14003);
+                closeLeftSeekBarAnimator.setDuration(10000); // Adjust duration as needed
+                closeRightSeekBarAnimator.setDuration(10000);
 
                 closeLeftSeekBarAnimator.addUpdateListener(animation -> {
                     int num = (int) closeLeftSeekBarAnimator.getAnimatedValue();
@@ -554,6 +554,8 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                 FragmentManager fragmentManager = activity.getSupportFragmentManager();
                 ElectricCurtainPopUpFragment popUpFragment = new ElectricCurtainPopUpFragment(list, getBindingAdapterPosition());
 
+
+                
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 transaction.add(R.id.main_container, popUpFragment)
