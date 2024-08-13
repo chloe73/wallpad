@@ -33,7 +33,6 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
 
     private ArrayList<ElectricCurtainRoomItem> list;
     private OnCurtainControlClickListener listener;
-    private ViewHolder viewHolder;
 
     public ElectricCurtainRecyclerViewAdapter(ArrayList<ElectricCurtainRoomItem> list) {
         this.list = list;
@@ -73,7 +72,6 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                 // 여는 중인 상태로 변경
                 list.get(idx).setStatus(2);
                 notifyItemChanged(idx);
-
             }
 
             @Override
@@ -110,60 +108,6 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                 // 닫는 중인 상태로 변경
                 list.get(idx).setStatus(3);
                 notifyItemChanged(idx);
-
-                // left curtain 이미지 생겨나는 애니메이션 적용
-//                int delay = 0;
-//                int duration = 2000; // 각 이미지가 사라지는 시간
-//
-//                // left curtain 이미지 생겨나는 애니메이션 적용
-//                for (int i = 6; i >= 0; i--) {
-//                    ImageView img = leftImgList.get(i);
-//                    ImageView img2 = rightImgList.get(i);
-//
-////                    img.setAlpha(0f);
-////                    img2.setAlpha(0f);
-////                    img.animate().alpha(1f).setDuration(duration).setStartDelay(delay).start();
-//
-//                    ObjectAnimator alphaAnimator = ObjectAnimator.ofFloat(img, "alpha", 0f, 1f);
-//                    alphaAnimator.setDuration(duration);
-//                    alphaAnimator.setStartDelay(delay);
-//                    alphaAnimator.addListener(new AnimatorListenerAdapter() {
-//                        @Override
-//                        public void onAnimationEnd(Animator animation) {
-////                            img.setVisibility(View.INVISIBLE);
-//                        }
-//                    });
-//                    closeLeftAnimatorSet.playTogether(alphaAnimator);
-//
-//                    ObjectAnimator alphaAnimator2 = ObjectAnimator.ofFloat(img2, "alpha", 0f, 1f);
-//                    alphaAnimator2.setDuration(duration);
-//                    alphaAnimator2.setStartDelay(delay);
-//                    alphaAnimator2.addListener(new AnimatorListenerAdapter() {
-//                        @Override
-//                        public void onAnimationEnd(Animator animation) {
-////                            img2.setVisibility(View.INVISIBLE);
-//                        }
-//                    });
-//                    closeRightAnimatorSet.playTogether(alphaAnimator2);
-//
-//                    delay += duration;
-//                    if (i <= 2 && i > 0) {
-//                        delay -= 1000;
-//                    }
-//                }
-//
-//                // right curtain 이미지 생겨나는 애니메이션 적용
-//                closeLeftAnimatorSet.start();
-//                closeRightAnimatorSet.start();
-//
-//                closeLeftAnimatorSet.addListener(new AnimatorListenerAdapter() {
-//                    @Override
-//                    public void onAnimationEnd(Animator animation) {
-//                        list.get(idx).setStatus(0); // 닫힘 상태로 업데이트
-//                        notifyItemChanged(idx); // 리사이클러뷰 아이템 업데이트
-//                        Log.d("list.get(idx).setStatus(0); // 닫힘 상태로 업데이트", "notifyItemChanged(idx); // 리사이클러뷰 아이템 업데이트");
-//                    }
-//                });
             }
 
             @Override
@@ -171,6 +115,7 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                 // 각 아이템 상태가 '여는 중' or '닫는 중'인 경우에만 동작함.
                 if (list.get(idx).getStatus() == 2 || list.get(idx).getStatus() == 3) {
                     list.get(idx).setStatus(4);
+                    list.get(idx).setValue(seekBarLeft.getProgress());
                     notifyItemChanged(idx);
 
                     leftSeekBarAnimator.pause();
@@ -197,7 +142,6 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
 
     @Override
     public int getItemCount() {
-
         return list.size();
     }
 

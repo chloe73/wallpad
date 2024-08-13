@@ -120,6 +120,7 @@ public class ElectricCurtainInRoomRecyclerViewAdapter extends RecyclerView.Adapt
                 // 각 아이템 상태가 '여는 중' or '닫는 중'인 경우에만 동작함.
                 if (item.getCurtainList().get(idx).getStatus() == 2 || item.getCurtainList().get(idx).getStatus() == 3) {
                     item.getCurtainList().get(idx).setStatus(4);
+                    item.getCurtainList().get(idx).setValue(seekBarLeft.getProgress());
                     notifyItemChanged(idx);
 
                     leftSeekBarAnimator.pause();
