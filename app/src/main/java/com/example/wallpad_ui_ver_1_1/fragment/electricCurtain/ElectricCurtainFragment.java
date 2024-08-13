@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,19 @@ public class ElectricCurtainFragment extends Fragment {
 
     public ElectricCurtainFragment(ArrayList<ElectricCurtainRoomItem> list) {
         this.list = list;
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d("ElectricCurtainFragment", "onPause 호출됨");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        Log.d("ElectricCurtainFragment", "onResume 호출됨");
     }
 
     @Override

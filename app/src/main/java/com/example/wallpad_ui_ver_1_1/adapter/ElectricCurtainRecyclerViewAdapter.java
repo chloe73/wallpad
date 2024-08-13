@@ -23,6 +23,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wallpad_ui_ver_1_1.R;
+import com.example.wallpad_ui_ver_1_1.fragment.electricCurtain.ElectricCurtainFragment;
 import com.example.wallpad_ui_ver_1_1.fragment.electricCurtain.ElectricCurtainPopUpFragment;
 import com.example.wallpad_ui_ver_1_1.item.ElectricCurtainRoomItem;
 
@@ -555,7 +556,7 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                 ElectricCurtainPopUpFragment popUpFragment = new ElectricCurtainPopUpFragment(list, getBindingAdapterPosition());
 
 
-                
+
                 FragmentTransaction transaction = fragmentManager.beginTransaction();
                 transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
                 transaction.add(R.id.main_container, popUpFragment)

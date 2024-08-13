@@ -47,19 +47,22 @@ public class ElectricCurtainInRoomRecyclerViewAdapter extends RecyclerView.Adapt
                     return;
                 }
 
-                openLeftSeekBarAnimator.setDuration(14003); // Adjust duration as needed
-                openRightSeekBarAnimator.setDuration(14003);
+                openLeftSeekBarAnimator.setDuration(10000); // Adjust duration as needed
+                openRightSeekBarAnimator.setDuration(10000);
 
+                // 왼쪽 seekbar progress 애니메이션 처리
                 openLeftSeekBarAnimator.addUpdateListener(animation -> {
                     int num = (int) openLeftSeekBarAnimator.getAnimatedValue();
                     seekBarLeft.setProgress(num);
                     updateOpenImageAlpha(leftImgList, num);
-                    if(num == 10) {
+                    if (num == 10) {
                         item.getCurtainList().get(idx).setStatus(1); // 열림 상태로 업데이트
                         item.getCurtainList().get(idx).setValue(10);
                         notifyItemChanged(idx);
                     }
                 });
+
+                // 오른쪽 seekbar progress 애니메이션 처리
                 openRightSeekBarAnimator.addUpdateListener(animation -> {
                     int num = (int) openRightSeekBarAnimator.getAnimatedValue();
                     seekBarRight.setProgress(num);
@@ -89,7 +92,7 @@ public class ElectricCurtainInRoomRecyclerViewAdapter extends RecyclerView.Adapt
                     int num = (int) closeLeftSeekBarAnimator.getAnimatedValue();
                     seekBarLeft.setProgress(num);
                     updateCloseImageAlpha(leftImgList, num);
-                    if(num == 100) {
+                    if (num == 100) {
                         item.getCurtainList().get(idx).setStatus(0);
                         item.getCurtainList().get(idx).setValue(100);
                         notifyItemChanged(idx);
@@ -113,7 +116,7 @@ public class ElectricCurtainInRoomRecyclerViewAdapter extends RecyclerView.Adapt
             @Override
             public void onPauseClick(SeekBar seekBarLeft, SeekBar seekBarRight, ArrayList<ImageView> leftCurtainImgList, ArrayList<ImageView> rightCurtainImgList, int idx, ValueAnimator leftSeekBarAnimator, ValueAnimator rightSeekBarAnimator) {
                 Log.d("ElectricCurtainInRoomRecyclerViewAdapter : ", "onPauseClick() in room 진입!");
-                Log.d("on pause !", ""+item.getCurtainList().get(idx).getStatus());
+                Log.d("on pause !", "" + item.getCurtainList().get(idx).getStatus());
                 // 각 아이템 상태가 '여는 중' or '닫는 중'인 경우에만 동작함.
                 if (item.getCurtainList().get(idx).getStatus() == 2 || item.getCurtainList().get(idx).getStatus() == 3) {
                     item.getCurtainList().get(idx).setStatus(4);
@@ -125,10 +128,11 @@ public class ElectricCurtainInRoomRecyclerViewAdapter extends RecyclerView.Adapt
             }
         };
     }
+
     @NonNull
     @Override
     public ElectricCurtainInRoomRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_electric_curtain_in_curtain,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_electric_curtain_in_curtain, parent, false);
         return new ViewHolder(view);
     }
 
@@ -325,42 +329,69 @@ public class ElectricCurtainInRoomRecyclerViewAdapter extends RecyclerView.Adapt
         }
 
         void onBind(ElectricCurtainRoomItem item, ElectricCurtainItem inItem, int position) {
-            String name = item.getRoomName()+" 커튼 " + (position+1);
+            // 커튼 이름
+            String name = item.getRoomName() + " 커튼 " + (position + 1);
             curtainName.setText(name);
 
-            if (inItem.getValue() <= 27) {
+            seekBarLeft.setProgress(inItem.getValue());
+            seekBarRight.setProgress(inItem.getValue());
 
+            // 각 커튼의 value에 따른 커튼 이미지 투명도 처리
+            if (inItem.getValue() <= 94) {
+                leftCurtainImgList.get(0).setAlpha(0f);
+                rightCurtainImgList.get(0).setAlpha(0f);
             }
-            else if(inItem.getValue() <= 40) {
-
+            if (inItem.getValue() <= 82) {
+                leftCurtainImgList.get(1).setAlpha(0f);
+                rightCurtainImgList.get(1).setAlpha(0f);
+            }
+            if (inItem.getValue() <= 69) {
+                leftCurtainImgList.get(2).setAlpha(0f);
+                rightCurtainImgList.get(2).setAlpha(0f);
+            }
+            if (inItem.getValue() <= 56) {
+                leftCurtainImgList.get(3).setAlpha(0f);
+                rightCurtainImgList.get(3).setAlpha(0f);
+            }
+            if (inItem.getValue() <= 43) {
+                leftCurtainImgList.get(4).setAlpha(0f);
+                rightCurtainImgList.get(4).setAlpha(0f);
+            }
+            if (inItem.getValue() <= 30) {
+                leftCurtainImgList.get(5).setAlpha(0f);
+                rightCurtainImgList.get(5).setAlpha(0f);
+            }
+            if(inItem.getValue() <= 17){
+                leftCurtainImgList.get(6).setAlpha(0f);
+                rightCurtainImgList.get(6).setAlpha(0f);
             }
 
-            // 열려 있는 경우,
-            if(inItem.getStatus() == 1) {
-                seekBarLeft.setProgress(10);
-                seekBarRight.setProgress(10);
-                // leftCurtain 투명도 처리
-                for (ImageView img : leftCurtainImgList) {
-                    img.setAlpha(0f);
-                }
-
-                for (ImageView img : rightCurtainImgList) {
-                    img.setAlpha(0f);
-                }
-            }
-            // 닫혀 있는 경우,
-            else if(inItem.getStatus() == 0) {
-                seekBarLeft.setProgress(100);
-                seekBarRight.setProgress(100);
-                // leftCurtain 투명도 처리
-                for (ImageView img : leftCurtainImgList) {
-                    img.setAlpha(1f);
-                }
-
-                for (ImageView img : rightCurtainImgList) {
-                    img.setAlpha(1f);
-                }
-            }
+//            // 열려 있는 경우,
+//            if (inItem.getStatus() == 1) {
+//                seekBarLeft.setProgress(10);
+//                seekBarRight.setProgress(10);
+//                // leftCurtain 투명도 처리
+//                for (ImageView img : leftCurtainImgList) {
+//                    img.setAlpha(0f);
+//                }
+//
+//                for (ImageView img : rightCurtainImgList) {
+//                    img.setAlpha(0f);
+//                }
+//            }
+//            // 닫혀 있는 경우,
+//            else if (inItem.getStatus() == 0) {
+//                seekBarLeft.setProgress(100);
+//                seekBarRight.setProgress(100);
+//                // leftCurtain 투명도 처리
+//                for (ImageView img : leftCurtainImgList) {
+//                    img.setAlpha(1f);
+//                }
+//
+//                for (ImageView img : rightCurtainImgList) {
+//                    img.setAlpha(1f);
+//                }
+//            }
         }
     }
 }
