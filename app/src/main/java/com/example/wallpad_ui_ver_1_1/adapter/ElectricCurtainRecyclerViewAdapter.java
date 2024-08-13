@@ -57,6 +57,7 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                     updateOpenImageAlpha(leftImgList, num);
                     if(num == 10) {
                         list.get(idx).setStatus(1); // 열림 상태로 업데이트
+                        list.get(idx).setValue(10);
                         notifyItemChanged(idx);
                     }
                 });
@@ -73,67 +74,6 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                 list.get(idx).setStatus(2);
                 notifyItemChanged(idx);
 
-                // left curtain 이미지 사라지는 애니메이션 적용
-                // rightcurtain 이미지 사라지는 애니메이션 적용
-//                int delay = 0;
-//                int duration = 2000; // 각 이미지가 사라지는 시간
-//
-//                for (int i = 0; i < leftImgList.size(); i++) {
-//                    ImageView img = leftImgList.get(i);
-//
-//                    // 이미 투명도가 처리된 부분은 넘어감 -> 일시정지했다가 다시 열림 버튼 누른 경우를 처리하기 위해
-////                    if (img.getAlpha() == 0f) continue;
-////                    openLeftViewPropertyAnimator = img.animate().alpha(0f).setDuration(duration).setStartDelay(delay).withEndAction(() -> img.setVisibility(View.INVISIBLE));
-////                    openLeftViewPropertyAnimator.start();
-//
-//                    ObjectAnimator alphaAnimator = ObjectAnimator.ofFloat(img, "alpha", 1f, 0f);
-//                    alphaAnimator.setDuration(duration);
-//                    alphaAnimator.setStartDelay(delay);
-//                    alphaAnimator.addListener(new AnimatorListenerAdapter() {
-//                        @Override
-//                        public void onAnimationEnd(Animator animation) {
-////                            img.setVisibility(View.INVISIBLE);
-//                        }
-//                    });
-//                    openLeftAnimatorSet.playTogether(alphaAnimator);
-//
-//                    ImageView img2 = rightImgList.get(i);
-////                    openRightViewPropertyAnimator = img.animate().alpha(0f).setDuration(duration).setStartDelay(delay).withEndAction(() -> img.setVisibility(View.INVISIBLE));
-////                    openRightViewPropertyAnimator.start();
-//
-//                    ObjectAnimator alphaAnimator2 = ObjectAnimator.ofFloat(img2, "alpha", 1f, 0f);
-//                    alphaAnimator2.setDuration(duration);
-//                    alphaAnimator2.setStartDelay(delay);
-//                    alphaAnimator2.addListener(new AnimatorListenerAdapter() {
-//                        @Override
-//                        public void onAnimationEnd(Animator animation) {
-////                            img2.setVisibility(View.INVISIBLE);
-//                        }
-//                    });
-//
-//                    openRightAnimatorSet.playTogether(alphaAnimator2);
-//
-//                    delay += duration; // 다음 이미지의 애니메이션이 시작될 지연 시간 증가
-//                    if (i >= 6) {
-//                        delay -= 1600;
-//                    }
-//                    if (i <= 1) {
-//                        delay += 500;
-//                    }
-//                    if (i == 3 || i == 4) {
-//                        delay -= 700;
-//                    }
-//                }
-//
-//                openLeftAnimatorSet.start();
-//                openRightAnimatorSet.start();
-//                openLeftAnimatorSet.addListener(new AnimatorListenerAdapter() {
-//                    @Override
-//                    public void onAnimationEnd(Animator animation) {
-//                        list.get(idx).setStatus(1); // 열림 상태로 업데이트
-//                        notifyItemChanged(idx);
-//                    }
-//                });
             }
 
             @Override
@@ -153,6 +93,7 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                     updateCloseImageAlpha(leftImgList, num);
                     if(num == 100) {
                         list.get(idx).setStatus(0);
+                        list.get(idx).setValue(100);
                         notifyItemChanged(idx);
                     }
                 });
@@ -585,34 +526,37 @@ public class ElectricCurtainRecyclerViewAdapter extends RecyclerView.Adapter<Ele
                     break;
             }
 
-            // 각 방의 커튼이 열려있는지 닫혀있는지 상태에 따라 커튼 이미지와 SeekBar progress 표시
-            if (item.getStatus() == 1) {
-                seekBarLeft.setProgress(10);
-                seekBarRight.setProgress(10);
+            seekBarLeft.setProgress(item.getValue());
+            seekBarRight.setProgress(item.getValue());
 
-                // leftCurtain 투명도 처리
-                for (ImageView img : leftCurtainImgList) {
-                    img.setAlpha(0f);
-                }
-
-                for (ImageView img : rightCurtainImgList) {
-                    img.setAlpha(0f);
-                }
+            // 각 커튼의 value에 따른 커튼 이미지 투명도 처리
+            if (item.getValue() <= 94) {
+                leftCurtainImgList.get(0).setAlpha(0f);
+                rightCurtainImgList.get(0).setAlpha(0f);
             }
-            else if (item.getStatus() == 0) {
-                if (seekBarLeft != null && seekBarLeft.getProgress() == 100) return;
-
-                seekBarLeft.setProgress(100);
-                seekBarRight.setProgress(100);
-
-                // leftCurtain 투명도 처리
-                for (ImageView img : leftCurtainImgList) {
-                    img.setAlpha(1f);
-                }
-
-                for (ImageView img : rightCurtainImgList) {
-                    img.setAlpha(1f);
-                }
+            if (item.getValue() <= 82) {
+                leftCurtainImgList.get(1).setAlpha(0f);
+                rightCurtainImgList.get(1).setAlpha(0f);
+            }
+            if (item.getValue() <= 69) {
+                leftCurtainImgList.get(2).setAlpha(0f);
+                rightCurtainImgList.get(2).setAlpha(0f);
+            }
+            if (item.getValue() <= 56) {
+                leftCurtainImgList.get(3).setAlpha(0f);
+                rightCurtainImgList.get(3).setAlpha(0f);
+            }
+            if (item.getValue() <= 43) {
+                leftCurtainImgList.get(4).setAlpha(0f);
+                rightCurtainImgList.get(4).setAlpha(0f);
+            }
+            if (item.getValue() <= 30) {
+                leftCurtainImgList.get(5).setAlpha(0f);
+                rightCurtainImgList.get(5).setAlpha(0f);
+            }
+            if(item.getValue() <= 17){
+                leftCurtainImgList.get(6).setAlpha(0f);
+                rightCurtainImgList.get(6).setAlpha(0f);
             }
 
         }

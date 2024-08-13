@@ -85,8 +85,8 @@ public class ElectricCurtainInRoomRecyclerViewAdapter extends RecyclerView.Adapt
                     return;
                 }
 
-                closeLeftSeekBarAnimator.setDuration(14003); // Adjust duration as needed
-                closeRightSeekBarAnimator.setDuration(14003);
+                closeLeftSeekBarAnimator.setDuration(10000); // Adjust duration as needed
+                closeRightSeekBarAnimator.setDuration(10000);
 
                 closeLeftSeekBarAnimator.addUpdateListener(animation -> {
                     int num = (int) closeLeftSeekBarAnimator.getAnimatedValue();
@@ -366,32 +366,6 @@ public class ElectricCurtainInRoomRecyclerViewAdapter extends RecyclerView.Adapt
                 rightCurtainImgList.get(6).setAlpha(0f);
             }
 
-//            // 열려 있는 경우,
-//            if (inItem.getStatus() == 1) {
-//                seekBarLeft.setProgress(10);
-//                seekBarRight.setProgress(10);
-//                // leftCurtain 투명도 처리
-//                for (ImageView img : leftCurtainImgList) {
-//                    img.setAlpha(0f);
-//                }
-//
-//                for (ImageView img : rightCurtainImgList) {
-//                    img.setAlpha(0f);
-//                }
-//            }
-//            // 닫혀 있는 경우,
-//            else if (inItem.getStatus() == 0) {
-//                seekBarLeft.setProgress(100);
-//                seekBarRight.setProgress(100);
-//                // leftCurtain 투명도 처리
-//                for (ImageView img : leftCurtainImgList) {
-//                    img.setAlpha(1f);
-//                }
-//
-//                for (ImageView img : rightCurtainImgList) {
-//                    img.setAlpha(1f);
-//                }
-//            }
         }
     }
 }
