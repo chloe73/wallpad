@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wallpad_ui_ver_1_1.R;
-import com.example.wallpad_ui_ver_1_1.SpacesItemDecoration;
+import com.example.wallpad_ui_ver_1_1.util.SpacesItemDecoration;
 import com.example.wallpad_ui_ver_1_1.item.RoomVentilationItem;
 
 import java.util.ArrayList;

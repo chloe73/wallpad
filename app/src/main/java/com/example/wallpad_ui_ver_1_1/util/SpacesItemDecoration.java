@@ -1,4 +1,4 @@
-package com.example.wallpad_ui_ver_1_1;
+package com.example.wallpad_ui_ver_1_1.util;
 
 import android.graphics.Rect;
 import android.view.View;

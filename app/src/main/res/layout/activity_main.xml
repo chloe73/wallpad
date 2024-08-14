@@ -71,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="45px"
-            android:text="환기"
+            android:text="스마트조명"
             android:textStyle="normal"
             android:textSize="47px"
             android:textColor="@color/white"
@@ -112,8 +112,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageButton2"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/change_filter_btn">
-        </ImageView>
+            app:srcCompat="@drawable/change_filter_btn"/>
 
         <TextView
             android:layout_width="wrap_content"

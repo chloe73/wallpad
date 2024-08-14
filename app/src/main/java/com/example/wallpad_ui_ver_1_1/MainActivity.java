@@ -11,11 +11,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.wallpad_ui_ver_1_1.fragment.electricCurtain.ElectricCurtainFragment;
+import com.example.wallpad_ui_ver_1_1.fragment.lighting.SmartLightingFragment;
 import com.example.wallpad_ui_ver_1_1.fragment.ventilation.DialogFilterChangeFragment;
 import com.example.wallpad_ui_ver_1_1.fragment.ventilation.VentilationFragment;
 import com.example.wallpad_ui_ver_1_1.item.ElectricCurtainItem;
 import com.example.wallpad_ui_ver_1_1.item.ElectricCurtainRoomItem;
+import com.example.wallpad_ui_ver_1_1.item.SmartLightingItem;
+import com.example.wallpad_ui_ver_1_1.item.SmartLightingRoomItem;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -61,8 +65,46 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
         // 전동커튼 fragment가 Main Activity 화면에 올라가는 코드
-        fragmentTransaction.add(R.id.container_frag, new ElectricCurtainFragment(getElectricCurtain()));
+//        fragmentTransaction.add(R.id.container_frag, new ElectricCurtainFragment(getElectricCurtain()));
+//        fragmentTransaction.commit();
+
+        // 스마트조명 fragment
+        fragmentTransaction.add(R.id.container_frag, new SmartLightingFragment(getSmartLighting()));
         fragmentTransaction.commit();
+    }
+
+    private ArrayList<SmartLightingRoomItem> getSmartLighting() {
+        ArrayList<SmartLightingRoomItem> list = new ArrayList<>();
+
+        ArrayList<SmartLightingItem> a = new ArrayList<>();
+        a.add(new SmartLightingItem(true, 99.9));
+        a.add(new SmartLightingItem(false, 199.9));
+        a.add(new SmartLightingItem(true, 9.9));
+        a.add(new SmartLightingItem(false, 99.9));
+        list.add(new SmartLightingRoomItem("거실", true, 399.9, a));
+
+        a = new ArrayList<>();
+        a.add(new SmartLightingItem(false, 99.9));
+        a.add(new SmartLightingItem(false, 99.9));
+        a.add(new SmartLightingItem(false, 99.9));
+        list.add(new SmartLightingRoomItem("방1",false, 289.7, a));
+
+        a = new ArrayList<>();
+        a.add(new SmartLightingItem(true, 49.9));
+        a.add(new SmartLightingItem(true, 59.9));
+        list.add(new SmartLightingRoomItem("방2", true, 122.3, a));
+
+        a = new ArrayList<>();
+        a.add(new SmartLightingItem(true, 9.9));
+        a.add(new SmartLightingItem(true, 9.9));
+        list.add(new SmartLightingRoomItem("방3", true, 19.3, a));
+
+        a = new ArrayList<>();
+        a.add(new SmartLightingItem(false, 19.9));
+        a.add(new SmartLightingItem(false, 29.9));
+        list.add(new SmartLightingRoomItem("방4", false, 56.3, a));
+
+        return list;
     }
 
     private ArrayList<ElectricCurtainRoomItem> getElectricCurtain() {

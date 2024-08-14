@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="218px"
+    android:layout_height="236px"
+    android:layout_marginEnd="12px"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_lighting_room">
+
+    <ImageView
+        android:id="@+id/lighting_room_background"
+        android:layout_width="218px"
+        android:layout_height="236px"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/background_lighting_room"/>
+    
+    <ImageView
+        android:id="@+id/img_black_circle_in_lighting"
+        android:layout_width="63px"
+        android:layout_height="63px"
+        android:layout_marginTop="22px"
+        android:layout_marginStart="25px"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/img_black_circle"/>
+
+    <ImageView
+        android:layout_width="36.6px"
+        android:layout_height="33.6px"
+        app:layout_constraintTop_toTopOf="@+id/img_black_circle_in_lighting"
+        app:layout_constraintStart_toStartOf="@+id/img_black_circle_in_lighting"
+        app:layout_constraintEnd_toEndOf="@+id/img_black_circle_in_lighting"
+        app:layout_constraintBottom_toBottomOf="@+id/img_black_circle_in_lighting"
+        android:background="@drawable/img_furniture_lighting"/>
+
+    <ImageView
+        android:layout_width="13.5px"
+        android:layout_height="23.6px"
+        android:layout_marginTop="29.7px"
+        android:layout_marginEnd="22px"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/icon_ionic_ios_arrow_back"/>
+
+    <TextView
+        android:id="@+id/tv_wat_lighting_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@+id/tv_w"
+        app:layout_constraintEnd_toStartOf="@+id/tv_w"
+        android:fontFamily="@font/apple_sd_gothic_neo_l"
+        android:textStyle="normal"
+        android:textSize="31px"
+        android:textColor="#ffffff"
+        android:text="0.000"/>
+
+    <TextView
+        android:id="@+id/tv_w"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="118px"
+        android:layout_marginEnd="20px"
+        android:fontFamily="@font/apple_sd_gothic_neo_l"
+        android:textStyle="normal"
+        android:textSize="31px"
+        android:textColor="#ffffff"
+        android:text="W"/>
+
+    <TextView
+        android:id="@+id/tv_room_name_in_lighting_room"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="27px"
+        android:layout_marginBottom="26px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:fontFamily="@font/apple_sd_gothic_neo_sb"
+        android:textStyle="normal"
+        android:textSize="28px"
+        android:textColor="#ffffff"
+        android:text="방이름"/>
+
+    <Switch
+        android:id="@+id/switch_smart_lighting_room"
+        android:layout_width="87.2px"
+        android:layout_height="39.7px"
+        android:layout_marginEnd="21.8px"
+        android:layout_marginBottom="26.3px"
+        android:thumb="@drawable/switch_thumb"
+        android:track="@drawable/switch_track"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
