@@ -34,6 +34,7 @@ public class SmartLightingRoomAdapter extends RecyclerView.Adapter<SmartLighting
     @Override
     public void onBindViewHolder(@NonNull SmartLightingRoomAdapter.ViewHolder holder, int position) {
         holder.onBind(list.get(position), position);
+        Log.d("bind !", "smart Lighting adapter bind!");
     }
 
     @Override
