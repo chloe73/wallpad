@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
@@ -43,19 +45,36 @@ public class SmartLightingFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        // recyclerview 연결
-        RecyclerView lightingRoomRecyclerView = view.findViewById(R.id.rv_lighting_room);
+        // 각 방 스마트 조명 recyclerview 연결
+        RecyclerView smartLightingRoomRecyclerView = view.findViewById(R.id.rv_smart_lighting_room);
         // 리사이클러뷰 레이아웃을 가로 스크롤 가능하게 설정
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
-        lightingRoomRecyclerView.setLayoutManager(layoutManager);
+        smartLightingRoomRecyclerView.setLayoutManager(layoutManager);
 
         // 리사이클러뷰 아이템 값 업데이트 시 화면 깜빡임 해결 코드
-        RecyclerView.ItemAnimator animator = lightingRoomRecyclerView.getItemAnimator();
+        RecyclerView.ItemAnimator animator = smartLightingRoomRecyclerView.getItemAnimator();
         if(animator instanceof SimpleItemAnimator) {
             ((SimpleItemAnimator) animator).setSupportsChangeAnimations(false);
         }
 
-        SmartLightingRoomAdapter smartLightingRoomAdapter = new SmartLightingRoomAdapter(list);
-        lightingRoomRecyclerView.setAdapter(smartLightingRoomAdapter);
+        SmartLightingRoomAdapter smartLightingRoomAdapter = new SmartLightingRoomAdapter(list, this::onItemSelected);
+        smartLightingRoomRecyclerView.setAdapter(smartLightingRoomAdapter);
+
+        loadSmartLightingRoomFragment(0);
+
+    }
+
+    private void onItemSelected(int position) {
+        // 사용자가 선택한 아이템의 리스트를 가져와 Fragment를 업데이트
+        loadSmartLightingRoomFragment(position);
+    }
+
+    private void loadSmartLightingRoomFragment(int idx) {
+
+        // 각 방 내 스마트조명 리스트 fragment 올림
+        FragmentManager fragmentManager = getParentFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.container_smart_lighting_room, new SmartLightingRoomFragment(list,idx));
+        fragmentTransaction.commit();
     }
 }

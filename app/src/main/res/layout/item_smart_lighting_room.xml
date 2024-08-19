@@ -34,6 +34,13 @@
         android:background="@drawable/img_furniture_lighting"/>
 
     <ImageView
+        android:id="@+id/touch_zone_in_item_smart_lighting_room"
+        android:layout_width="match_parent"
+        android:layout_height="100px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    
+    <ImageView
         android:layout_width="13.5px"
         android:layout_height="23.6px"
         android:layout_marginTop="29.7px"

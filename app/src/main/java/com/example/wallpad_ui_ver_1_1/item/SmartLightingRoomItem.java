@@ -6,7 +6,6 @@ public class SmartLightingRoomItem {
     private String roomName;
     private boolean isOn;
     private double wat;
-
     private ArrayList<SmartLightingItem> lightingList;
 
     public SmartLightingRoomItem(String roomName, boolean isOn, double wat, ArrayList<SmartLightingItem> lightingList) {

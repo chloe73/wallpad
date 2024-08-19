@@ -87,19 +87,9 @@ public class ElectricCurtainFragment extends Fragment {
         totalRoomOpenButton = view.findViewById(R.id.whole_room_open_container);
         totalRoomCloseButton = view.findViewById(R.id.whole_room_close_container);
 
-        totalRoomOpenButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                electricCurtainRecyclerViewAdapter.onOpenClick(recyclerView);
-            }
-        });
+        totalRoomOpenButton.setOnClickListener(view1 -> electricCurtainRecyclerViewAdapter.onOpenClick(recyclerView));
 
-        totalRoomCloseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                electricCurtainRecyclerViewAdapter.onCloseClick(recyclerView);
-            }
-        });
+        totalRoomCloseButton.setOnClickListener(view12 -> electricCurtainRecyclerViewAdapter.onCloseClick(recyclerView));
     }
 
 }
