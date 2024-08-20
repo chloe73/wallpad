@@ -59,7 +59,7 @@ public class SmartLightingRoomInPieceAdapter extends RecyclerView.Adapter<SmartL
         }
 
         void onBind(SmartLightingItem item, int position) {
-            String name = "조명" + (position + 1);
+            String name = "조명 " + (position + 1);
             lightingName.setText(name);
             aSwitch.setChecked(item.isOn());
             wat.setText(item.getWat() + "");

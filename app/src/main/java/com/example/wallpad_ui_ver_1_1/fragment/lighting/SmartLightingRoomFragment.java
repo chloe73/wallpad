@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.SimpleItemAnimator;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.wallpad_ui_ver_1_1.R;
@@ -60,5 +61,12 @@ public class SmartLightingRoomFragment extends Fragment {
         if(animator instanceof SimpleItemAnimator) {
             ((SimpleItemAnimator) animator).setSupportsChangeAnimations(false);
         }
+
+
+        // 방 이름 수정 버튼 구현
+        ImageView btnEditRoomName = view.findViewById(R.id.img_edit_room_name_in_smart_lighting_room_fragment);
+        btnEditRoomName.setOnClickListener(view1 -> {
+
+        });
     }
 }
