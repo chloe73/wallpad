@@ -7,6 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.wallpad_ui_ver_1_1.R;
+import com.example.wallpad_ui_ver_1_1.adapter.SmartLightingRoomInPieceAdapter;
 import com.example.wallpad_ui_ver_1_1.item.SmartLightingRoomItem;
 
 import java.util.ArrayList;
@@ -50,6 +52,13 @@ public class SmartLightingRoomFragment extends Fragment {
         smartLightingRoomInPieceRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // adapter 연결
+        SmartLightingRoomInPieceAdapter smartLightingRoomInPieceAdapter = new SmartLightingRoomInPieceAdapter(item);
+        smartLightingRoomInPieceRecyclerView.setAdapter(smartLightingRoomInPieceAdapter);
 
+        // 리사이클러뷰 아이템 값 업데이트 시 화면 깜빡임 해결 코드
+        RecyclerView.ItemAnimator animator = smartLightingRoomInPieceRecyclerView.getItemAnimator();
+        if(animator instanceof SimpleItemAnimator) {
+            ((SimpleItemAnimator) animator).setSupportsChangeAnimations(false);
+        }
     }
 }

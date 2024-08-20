@@ -22,6 +22,7 @@
         android:textColor="#ffffff"/>
 
     <ImageView
+        android:id="@+id/img_edit_room_name_in_smart_lighting_room_fragment"
         android:layout_width="94px"
         android:layout_height="94px"
         android:layout_marginTop="66px"
@@ -36,12 +37,14 @@
         android:layout_marginTop="38px"
         app:layout_constraintTop_toBottomOf="@+id/tv_room_name_in_smart_lighting_fragment"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_smart_lighting_room_in_piece"
+            android:overScrollMode="never"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             tools:listitem="@layout/item_smart_lighting_room_in_piece"/>
 
     </androidx.core.widget.NestedScrollView>

@@ -60,6 +60,8 @@ public class SmartLightingFragment extends Fragment {
         SmartLightingRoomAdapter smartLightingRoomAdapter = new SmartLightingRoomAdapter(list, this::onItemSelected);
         smartLightingRoomRecyclerView.setAdapter(smartLightingRoomAdapter);
 
+        smartLightingRoomRecyclerView.scrollToPosition(0);
+
         loadSmartLightingRoomFragment(0);
 
     }

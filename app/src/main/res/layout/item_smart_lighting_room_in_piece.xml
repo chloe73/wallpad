@@ -54,6 +54,7 @@
         android:textColor="#ffffff"/>
 
     <TextView
+        android:id="@+id/tv_wat_value_in_smart_lighting_room_in_piece"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="@+id/tv_wat_lighting_room_in_piece"

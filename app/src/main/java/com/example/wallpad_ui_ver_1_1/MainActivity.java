@@ -81,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
         a.add(new SmartLightingItem(false, 199.9));
         a.add(new SmartLightingItem(true, 9.9));
         a.add(new SmartLightingItem(false, 99.9));
+        a.add(new SmartLightingItem(false, 10.99));
         list.add(new SmartLightingRoomItem("거실", true, 399.9, a));
 
         a = new ArrayList<>();
