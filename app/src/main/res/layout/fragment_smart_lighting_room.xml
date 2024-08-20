@@ -7,7 +7,7 @@
     android:background="@color/black"
     tools:context=".fragment.lighting.SmartLightingRoomFragment">
 
-    <TextView
+    <EditText
         android:id="@+id/tv_room_name_in_smart_lighting_fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,6 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:text="방 이름"
+        android:inputType="text"
         android:fontFamily="@font/apple_sd_gothic_neo_sb"
         android:textStyle="normal"
         android:textSize="64px"

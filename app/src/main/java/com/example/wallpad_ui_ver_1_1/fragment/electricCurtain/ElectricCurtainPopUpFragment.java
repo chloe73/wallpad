@@ -84,7 +84,8 @@ public class ElectricCurtainPopUpFragment extends Fragment {
         if (electricCurtainInRoomRecyclerViewAdapter.getItemCount() <= 2) {
             layoutManager.setScrollEnabled(false); // 스크롤 불가
             Log.d("스크롤 불가 처리", " 스크롤 불가 처리 했잖아!!!!!!!!!!");
-        } else {
+        }
+        else {
             layoutManager.setScrollEnabled(true); // 스크롤 가능
         }
 

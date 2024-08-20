@@ -1,5 +1,6 @@
 package com.example.wallpad_ui_ver_1_1.fragment.lighting;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -9,9 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,7 +50,7 @@ public class SmartLightingRoomFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        TextView roomName = view.findViewById(R.id.tv_room_name_in_smart_lighting_fragment);
+        EditText roomName = view.findViewById(R.id.tv_room_name_in_smart_lighting_fragment);
         roomName.setText(item.getRoomName());
 
         // 각 방 내부 스마트 조명 recyclerview 연결
@@ -66,7 +71,27 @@ public class SmartLightingRoomFragment extends Fragment {
         // 방 이름 수정 버튼 구현
         ImageView btnEditRoomName = view.findViewById(R.id.img_edit_room_name_in_smart_lighting_room_fragment);
         btnEditRoomName.setOnClickListener(view1 -> {
+            roomName.requestFocus();  // EditText에 포커스 요청
+            roomName.setSelection(roomName.getText().length());  // 기존 텍스트 끝에 커서 위치 설정
 
+            // 키보드 표시
+            InputMethodManager imm = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm != null) {
+                imm.showSoftInput(roomName, InputMethodManager.SHOW_IMPLICIT);
+            }
+        });
+
+        // 엔터 키 이벤트 처리
+        roomName.setOnKeyListener((v, keyCode, event) -> {
+            if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
+                // 엔터 키 입력 시 키보드 숨기기
+                InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                if (imm != null) {
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                }
+                return true; // 이벤트 소비, 엔터 키 처리 안 함
+            }
+            return false;
         });
     }
 }
