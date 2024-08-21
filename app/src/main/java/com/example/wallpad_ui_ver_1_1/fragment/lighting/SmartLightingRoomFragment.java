@@ -84,9 +84,16 @@ public class SmartLightingRoomFragment extends Fragment {
         // 엔터 키 이벤트 처리
         roomName.setOnKeyListener((v, keyCode, event) -> {
             if (keyCode == KeyEvent.KEYCODE_ENTER && event.getAction() == KeyEvent.ACTION_DOWN) {
-                // 엔터 키 입력 시 키보드 숨기기
+                // 현재 입력된 텍스트 가져오기
+                String newName = roomName.getText().toString();
+
+                // 방 이름 수정
+                item.setRoomName(newName);
+
+                // 엔터 키 입력 시 키보드 숨기기 -> 방 이름 수정 완료 처리
                 InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                 if (imm != null) {
+
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
                 return true; // 이벤트 소비, 엔터 키 처리 안 함

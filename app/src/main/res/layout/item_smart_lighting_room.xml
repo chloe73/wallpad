@@ -47,7 +47,7 @@
         android:layout_marginEnd="22px"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@drawable/icon_ionic_ios_arrow_back"/>
+        android:background="@drawable/icon_ionic_ios_arrow_back2"/>
 
     <TextView
         android:id="@+id/tv_wat_lighting_room"
