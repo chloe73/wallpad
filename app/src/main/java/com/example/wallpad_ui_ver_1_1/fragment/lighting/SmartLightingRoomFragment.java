@@ -67,7 +67,7 @@ public class SmartLightingRoomFragment extends Fragment {
         smartLightingRoomInPieceRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         // adapter 연결
-        SmartLightingRoomInPieceAdapter smartLightingRoomInPieceAdapter = new SmartLightingRoomInPieceAdapter(item);
+        SmartLightingRoomInPieceAdapter smartLightingRoomInPieceAdapter = new SmartLightingRoomInPieceAdapter(item, idx, smartLightingSharedViewModel);
         smartLightingRoomInPieceRecyclerView.setAdapter(smartLightingRoomInPieceAdapter);
 
         // 리사이클러뷰 아이템 값 업데이트 시 화면 깜빡임 해결 코드

@@ -16,6 +16,7 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wallpad_ui_ver_1_1.R;
+import com.example.wallpad_ui_ver_1_1.item.SmartLightingItem;
 import com.example.wallpad_ui_ver_1_1.item.SmartLightingRoomItem;
 import com.example.wallpad_ui_ver_1_1.viewModel.SmartLightingSharedViewModel;
 
@@ -83,8 +84,8 @@ public class SmartLightingRoomAdapter extends RecyclerView.Adapter<SmartLighting
 
         void onBind(SmartLightingRoomItem item, int position) {
             roomName.setText(smartLightingSharedViewModel.getSmartLightingRooms().getValue().get(position).getRoomName());
-            wat.setText(item.getWat()+"");
-            aSwitch.setChecked(item.isOn());
+            wat.setText(item.getWat() + "");
+            aSwitch.setChecked(smartLightingSharedViewModel.getSmartLightingRooms().getValue().get(position).isOn());
 
             touchZone.setOnClickListener(view -> {
                 // 사용자가 이 부분을 터치하면 SmartLightingRoomFragment에 터치한 방 내 조명리스트가 보이게 한다.
@@ -97,13 +98,21 @@ public class SmartLightingRoomAdapter extends RecyclerView.Adapter<SmartLighting
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     item.setOn(isChecked);// item의 isOn 값을 변경
                     list.get(position).setOn(isChecked);
+                    // 전체 켜짐 or 꺼짐 처리
+                    ArrayList<SmartLightingItem> lightingList = smartLightingSharedViewModel.getSmartLightingRooms().getValue().get(position).getLightingList();
+                    for (SmartLightingItem lightingItem : lightingList) {
+                        lightingItem.setOn(isChecked); // 모든 조명의 상태를 isChecked 값으로 설정
+                    }
+                    // 업데이트된 lightingList를 SmartLightingRoomItem에 다시 설정
+                    list.get(position).setLightingList(lightingList);
+                    // ViewModel 업데이트
                     smartLightingSharedViewModel.setSmartLightingRooms(list);
-                    Log.d("switch on off 상태", ""+isChecked);
+                    Log.d("switch on off 상태", "" + isChecked);
                     notifyItemChanged(position);
                 }
             });
 
-            if(item.isOn())
+            if (item.isOn())
                 background.setBackgroundResource(R.drawable.background_lighting_room_purple);
             else
                 background.setBackgroundResource(R.drawable.background_lighting_room);
