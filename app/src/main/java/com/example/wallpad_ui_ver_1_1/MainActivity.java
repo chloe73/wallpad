@@ -96,12 +96,12 @@ public class MainActivity extends AppCompatActivity {
         a.add(new SmartLightingItem(false, 99.9));
         a.add(new SmartLightingItem(false, 99.9));
         a.add(new SmartLightingItem(false, 99.9));
-        list.add(new SmartLightingRoomItem("방1",false, 289.7, a));
+        list.add(new SmartLightingRoomItem("방방방",false, 289.7, a));
 
         a = new ArrayList<>();
         a.add(new SmartLightingItem(true, 49.9));
         a.add(new SmartLightingItem(true, 59.9));
-        list.add(new SmartLightingRoomItem("방2", true, 122.3, a));
+        list.add(new SmartLightingRoomItem("방방방방", true, 122.3, a));
 
         a = new ArrayList<>();
         a.add(new SmartLightingItem(true, 9.9));

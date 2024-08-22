@@ -79,6 +79,7 @@ public class SmartLightingRoomFragment extends Fragment {
         // 방 이름 수정 버튼 구현
         ImageView btnEditRoomName = view.findViewById(R.id.img_edit_room_name_in_smart_lighting_room_fragment);
         btnEditRoomName.setOnClickListener(view1 -> {
+            roomName.setEnabled(true);
             roomName.requestFocus();  // EditText에 포커스 요청
             roomName.setSelection(roomName.getText().length());  // 기존 텍스트 끝에 커서 위치 설정
 

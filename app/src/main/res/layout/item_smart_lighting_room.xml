@@ -77,7 +77,7 @@
 
     <TextView
         android:id="@+id/tv_room_name_in_lighting_room"
-        android:layout_width="wrap_content"
+        android:layout_width="74px"
         android:layout_height="wrap_content"
         android:layout_marginStart="27px"
         android:layout_marginBottom="26px"
@@ -89,8 +89,8 @@
         android:textColor="#ffffff"
         android:maxLines="1"
         android:ellipsize="end"
-        android:maxEms="2"
-        android:text="방이름tttt"/>
+        android:maxEms="3"
+        android:text="방방방방"/>
 
     <Switch
         android:id="@+id/switch_smart_lighting_room"
