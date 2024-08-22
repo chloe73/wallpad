@@ -1,5 +1,6 @@
 package com.example.wallpad_ui_ver_1_1.adapter;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,16 +11,19 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wallpad_ui_ver_1_1.R;
-import com.example.wallpad_ui_ver_1_1.fragment.lighting.SmartLightingFragment;
 import com.example.wallpad_ui_ver_1_1.item.SmartLightingRoomItem;
+import com.example.wallpad_ui_ver_1_1.viewModel.SmartLightingSharedViewModel;
 
 import java.util.ArrayList;
 
 public class SmartLightingRoomAdapter extends RecyclerView.Adapter<SmartLightingRoomAdapter.ViewHolder> {
 
+    private SmartLightingSharedViewModel smartLightingSharedViewModel;
     private ArrayList<SmartLightingRoomItem> list;
     private OnItemClickListener listener;
 
@@ -27,9 +31,10 @@ public class SmartLightingRoomAdapter extends RecyclerView.Adapter<SmartLighting
         void onItemClick(int position);
     }
 
-    public SmartLightingRoomAdapter(ArrayList<SmartLightingRoomItem> list, OnItemClickListener listener) {
+    public SmartLightingRoomAdapter(ArrayList<SmartLightingRoomItem> list, OnItemClickListener listener, SmartLightingSharedViewModel smartLightingSharedViewModel) {
         this.list = list;
         this.listener = listener;
+        this.smartLightingSharedViewModel = smartLightingSharedViewModel;
     }
 
     @NonNull
@@ -40,8 +45,17 @@ public class SmartLightingRoomAdapter extends RecyclerView.Adapter<SmartLighting
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SmartLightingRoomAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SmartLightingRoomAdapter.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.onBind(list.get(position), position);
+
+        // ViewModel의 데이터를 관찰하여 변경이 감지되면 UI 업데이트
+        smartLightingSharedViewModel.getSmartLightingRooms().observe((LifecycleOwner) holder.itemView.getContext(), new Observer<ArrayList<SmartLightingRoomItem>>() {
+            @Override
+            public void onChanged(ArrayList<SmartLightingRoomItem> updatedList) {
+                // 업데이트된 roomName을 설정
+                holder.roomName.setText(updatedList.get(position).getRoomName());
+            }
+        });
     }
 
     @Override
@@ -68,7 +82,7 @@ public class SmartLightingRoomAdapter extends RecyclerView.Adapter<SmartLighting
         }
 
         void onBind(SmartLightingRoomItem item, int position) {
-            roomName.setText(item.getRoomName());
+            roomName.setText(smartLightingSharedViewModel.getSmartLightingRooms().getValue().get(position).getRoomName());
             wat.setText(item.getWat()+"");
             aSwitch.setChecked(item.isOn());
 
@@ -82,6 +96,8 @@ public class SmartLightingRoomAdapter extends RecyclerView.Adapter<SmartLighting
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                     item.setOn(isChecked);// item의 isOn 값을 변경
+                    list.get(position).setOn(isChecked);
+                    smartLightingSharedViewModel.setSmartLightingRooms(list);
                     Log.d("switch on off 상태", ""+isChecked);
                     notifyItemChanged(position);
                 }

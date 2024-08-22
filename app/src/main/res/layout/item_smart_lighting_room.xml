@@ -87,7 +87,10 @@
         android:textStyle="normal"
         android:textSize="28px"
         android:textColor="#ffffff"
-        android:text="방이름"/>
+        android:maxLines="1"
+        android:ellipsize="end"
+        android:maxEms="2"
+        android:text="방이름tttt"/>
 
     <Switch
         android:id="@+id/switch_smart_lighting_room"

@@ -18,15 +18,18 @@ import android.view.ViewGroup;
 import com.example.wallpad_ui_ver_1_1.R;
 import com.example.wallpad_ui_ver_1_1.adapter.SmartLightingRoomAdapter;
 import com.example.wallpad_ui_ver_1_1.item.SmartLightingRoomItem;
+import com.example.wallpad_ui_ver_1_1.viewModel.SmartLightingSharedViewModel;
 
 import java.util.ArrayList;
 
 public class SmartLightingFragment extends Fragment {
 
+    private SmartLightingSharedViewModel smartLightingSharedViewModel;
     private ArrayList<SmartLightingRoomItem> list;
 
-    public SmartLightingFragment(ArrayList<SmartLightingRoomItem> smartLighting) {
-        this.list = smartLighting;
+    public SmartLightingFragment(SmartLightingSharedViewModel smartLightingSharedViewModel) {
+        this.smartLightingSharedViewModel = smartLightingSharedViewModel;
+        this.list = smartLightingSharedViewModel.getSmartLightingRooms().getValue();
     }
 
     @Override
@@ -57,11 +60,12 @@ public class SmartLightingFragment extends Fragment {
             ((SimpleItemAnimator) animator).setSupportsChangeAnimations(false);
         }
 
-        SmartLightingRoomAdapter smartLightingRoomAdapter = new SmartLightingRoomAdapter(list, this::onItemSelected);
+        SmartLightingRoomAdapter smartLightingRoomAdapter = new SmartLightingRoomAdapter(list, this::onItemSelected, smartLightingSharedViewModel);
         smartLightingRoomRecyclerView.setAdapter(smartLightingRoomAdapter);
 
         smartLightingRoomRecyclerView.scrollToPosition(0);
 
+        // 화면 하단 각 방 조명 리스트에 해당하는 fragment 올림
         loadSmartLightingRoomFragment(0);
 
     }
@@ -76,7 +80,7 @@ public class SmartLightingFragment extends Fragment {
         // 각 방 내 스마트조명 리스트 fragment 올림
         FragmentManager fragmentManager = getParentFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.container_smart_lighting_room, new SmartLightingRoomFragment(list,idx));
+        fragmentTransaction.add(R.id.container_smart_lighting_room, new SmartLightingRoomFragment(list,idx,smartLightingSharedViewModel));
         fragmentTransaction.commit();
     }
 }

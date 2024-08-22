@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,15 +24,22 @@ import android.widget.TextView;
 import com.example.wallpad_ui_ver_1_1.R;
 import com.example.wallpad_ui_ver_1_1.adapter.SmartLightingRoomInPieceAdapter;
 import com.example.wallpad_ui_ver_1_1.item.SmartLightingRoomItem;
+import com.example.wallpad_ui_ver_1_1.viewModel.SmartLightingSharedViewModel;
 
 import java.util.ArrayList;
 
 public class SmartLightingRoomFragment extends Fragment {
 
+    private int idx;
+    private ArrayList<SmartLightingRoomItem> list;
+    private SmartLightingSharedViewModel smartLightingSharedViewModel;
     private SmartLightingRoomItem item;
 
-    public SmartLightingRoomFragment(ArrayList<SmartLightingRoomItem> list, int idx) {
+    public SmartLightingRoomFragment(ArrayList<SmartLightingRoomItem> list, int idx, SmartLightingSharedViewModel smartLightingSharedViewModel) {
+        this.idx = idx;
+        this.list = list;
         this.item = list.get(idx);
+        this.smartLightingSharedViewModel = smartLightingSharedViewModel;
     }
 
     @Override
@@ -50,6 +58,7 @@ public class SmartLightingRoomFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // 방 이름 세팅
         EditText roomName = view.findViewById(R.id.tv_room_name_in_smart_lighting_fragment);
         roomName.setText(item.getRoomName());
 
@@ -66,7 +75,6 @@ public class SmartLightingRoomFragment extends Fragment {
         if(animator instanceof SimpleItemAnimator) {
             ((SimpleItemAnimator) animator).setSupportsChangeAnimations(false);
         }
-
 
         // 방 이름 수정 버튼 구현
         ImageView btnEditRoomName = view.findViewById(R.id.img_edit_room_name_in_smart_lighting_room_fragment);
@@ -89,6 +97,9 @@ public class SmartLightingRoomFragment extends Fragment {
 
                 // 방 이름 수정
                 item.setRoomName(newName);
+                list.get(idx).setRoomName(newName);
+                smartLightingSharedViewModel.setSmartLightingRooms(list);
+                Log.d("SmartLightingRoomFragment에서 사용자가 방 이름 바꿈!", ""+smartLightingSharedViewModel.getSmartLightingRooms().getValue().get(idx).getRoomName());
 
                 // 엔터 키 입력 시 키보드 숨기기 -> 방 이름 수정 완료 처리
                 InputMethodManager imm = (InputMethodManager) v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);

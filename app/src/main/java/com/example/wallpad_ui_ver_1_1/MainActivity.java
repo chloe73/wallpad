@@ -9,6 +9,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.wallpad_ui_ver_1_1.fragment.electricCurtain.ElectricCurtainFragment;
 import com.example.wallpad_ui_ver_1_1.fragment.lighting.SmartLightingFragment;
@@ -18,11 +19,14 @@ import com.example.wallpad_ui_ver_1_1.item.ElectricCurtainItem;
 import com.example.wallpad_ui_ver_1_1.item.ElectricCurtainRoomItem;
 import com.example.wallpad_ui_ver_1_1.item.SmartLightingItem;
 import com.example.wallpad_ui_ver_1_1.item.SmartLightingRoomItem;
+import com.example.wallpad_ui_ver_1_1.viewModel.SmartLightingSharedViewModel;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+    private SmartLightingSharedViewModel smartLightingSharedViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,8 +72,12 @@ public class MainActivity extends AppCompatActivity {
 //        fragmentTransaction.add(R.id.container_frag, new ElectricCurtainFragment(getElectricCurtain()));
 //        fragmentTransaction.commit();
 
+        // SmartLightingRoomItem 초기 데이터 세팅 & SharedViewModel 초기화
+        smartLightingSharedViewModel = new ViewModelProvider(this).get(SmartLightingSharedViewModel.class);
+        // 초기 데이터 설정
+        smartLightingSharedViewModel.setSmartLightingRooms(getSmartLighting());
         // 스마트조명 fragment
-        fragmentTransaction.add(R.id.container_frag, new SmartLightingFragment(getSmartLighting()));
+        fragmentTransaction.add(R.id.container_frag, new SmartLightingFragment(smartLightingSharedViewModel));
         fragmentTransaction.commit();
     }
 
